@@ -6,15 +6,14 @@ import os
 # Configuración de la conexión a la base de datos
 def get_db_connection():
     try:
-        connection_string = (
-            "DRIVER={ODBC Driver 17 for SQL Server};"
-            "SERVER=" + os.getenv('DB_SERVER', 'sql.bsite.net\\MSSQL2016') + ";"
-            "DATABASE=" + os.getenv('DB_NAME', 'lenn343_') + ";"
-            "UID=" + os.getenv('DB_USER', 'lenn343_') + ";"
-            "PWD=" + os.getenv('DB_PASSWORD', '!@#qwerty123') + ";"
+        conn = pymssql.connect(
+            server=os.getenv('DB_SERVER', 'sql.bsite.net'),
+            user=os.getenv('DB_USER', 'lenn343_'),
+            password=os.getenv('DB_PASSWORD', '!@#qwerty123'),
+            database=os.getenv('DB_NAME', 'lenn343_')
         )
-        return pyodbc.connect(connection_string)
-    except pyodbc.Error as e:
+        return conn
+    except pymssql.Error as e:
         print(f"Error al conectar a la base de datos: {e}")
         exit(1)
 

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="nuevos cambios para el host" />
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="configuracion render" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -89,12 +89,29 @@
       <option name="project" value="LOCAL" />
       <updated>1740099986507</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="nuevos cambios para el host">
+      <option name="closed" value="true" />
+      <created>1740100126489</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1740100126489</updated>
+    </task>
+    <task id="LOCAL-00005" summary="configuracion render">
+      <option name="closed" value="true" />
+      <created>1740100420919</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1740100420919</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="primeros datos" />
     <MESSAGE value="nuevos cambios para el host" />
-    <option name="LAST_COMMIT_MESSAGE" value="nuevos cambios para el host" />
+    <MESSAGE value="configuracion render" />
+    <option name="LAST_COMMIT_MESSAGE" value="configuracion render" />
   </component>
 </project>

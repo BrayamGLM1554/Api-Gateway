@@ -7,11 +7,11 @@ import os
 def get_db_connection():
     try:
         connection_string = (
-            f"DRIVER={{ODBC Driver 17 for SQL Server}};"
-            f"SERVER={os.getenv('DB_SERVER', 'sql.bsite.net\\MSSQL2016')};"
-            f"DATABASE={os.getenv('DB_NAME', 'lenn343_')};"
-            f"UID={os.getenv('DB_USER', 'lenn343_')};"
-            f"PWD={os.getenv('DB_PASSWORD', '!@#qwerty123')};"
+            "DRIVER={ODBC Driver 17 for SQL Server};"
+            "SERVER=" + os.getenv('DB_SERVER', 'sql.bsite.net\\MSSQL2016') + ";"
+            "DATABASE=" + os.getenv('DB_NAME', 'lenn343_') + ";"
+            "UID=" + os.getenv('DB_USER', 'lenn343_') + ";"
+            "PWD=" + os.getenv('DB_PASSWORD', '!@#qwerty123') + ";"
         )
         return pyodbc.connect(connection_string)
     except pyodbc.Error as e:
@@ -30,6 +30,6 @@ app.add_route('/login', login_resource)
 # Ejecutar la aplicación (usando WSGI)
 if __name__ == '__main__':
     from wsgiref import simple_server
-    httpd = simple_server.make_server('127.0.0.1', 8000, app)
+    httpd = simple_server.make_server('0.0.0.0', 8000, app)
     print("Servidor corriendo en http://0.0.0.0:8000")
     httpd.serve_forever()

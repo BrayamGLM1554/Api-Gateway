@@ -1,9 +1,9 @@
-import falcon
-from api.resources import LoginResource
-import pyodbc
 import os
+import falcon
+import pymssql
+from api.resources import LoginResource
 
-# Configuración de la conexión a la base de datos
+# Configuración de la conexión a la base de datos usando pymssql
 def get_db_connection():
     try:
         conn = pymssql.connect(
@@ -26,7 +26,7 @@ login_resource = LoginResource(get_db_connection())
 # Agregar la ruta para el login
 app.add_route('/login', login_resource)
 
-# Ejecutar la aplicación (usando WSGI)
+# Ejecutar la aplicación con Gunicorn en Render
 if __name__ == '__main__':
     from wsgiref import simple_server
     httpd = simple_server.make_server('0.0.0.0', 8000, app)

@@ -1,19 +1,20 @@
 import os
 import falcon
-import pymssql
+import pymysql
 from api.resources import LoginResource
 
-# Configuración de la conexión a la base de datos usando pymssql
+# Configuración de la conexión a la base de datos usando pymysql
 def get_db_connection():
     try:
-        conn = pymssql.connect(
-            server=os.getenv('DB_SERVER', 'sql.bsite.net'),
-            user=os.getenv('DB_USER', 'lenn343_'),
-            password=os.getenv('DB_PASSWORD', '!@#qwerty123'),
-            database=os.getenv('DB_NAME', 'lenn343_')
+        conn = pymysql.connect(
+            host=os.getenv('DB_HOST', 'sql.freedb.tech'),  # Host de la base de datos
+            port=int(os.getenv('DB_PORT', 3306)),         # Puerto de MySQL
+            user=os.getenv('DB_USER', 'freedb_brayam'),   # Usuario de la base de datos
+            password=os.getenv('DB_PASSWORD', '8Z&DK2TVBW2MPfa'),  # Contraseña
+            database=os.getenv('DB_NAME', 'freedb_TrQuetz')  # Nombre de la base de datos
         )
         return conn
-    except pymssql.Error as e:
+    except pymysql.Error as e:
         print(f"Error al conectar a la base de datos: {e}")
         exit(1)
 
@@ -26,9 +27,8 @@ login_resource = LoginResource(get_db_connection())
 # Agregar la ruta para el login
 app.add_route('/login', login_resource)
 
-# Ejecutar la aplicación con Gunicorn en Render
+# Usar waitress para ejecutar la aplicación en Windows
 if __name__ == '__main__':
-    from wsgiref import simple_server
-    httpd = simple_server.make_server('0.0.0.0', 8000, app)
-    print("Servidor corriendo en http://0.0.0.0:8000")
-    httpd.serve_forever()
+    from waitress import serve
+    print("Servidor corriendo en https://0.0.0.0:8000")
+    serve(app, host='0.0.0.0', port=8000)

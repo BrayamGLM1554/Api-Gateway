@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.78 Vercel Update">
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.781 Vercel Update">
       <change beforePath="$PROJECT_DIR$/api/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/login.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740359447858</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="v 0.781 Vercel Update">
+      <option name="closed" value="true" />
+      <created>1740359732855</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1740359732855</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -194,6 +202,7 @@
     <MESSAGE value="v 0.76 Vercel Update" />
     <MESSAGE value="v 0.77 Vercel Update" />
     <MESSAGE value="v 0.78 Vercel Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.78 Vercel Update" />
+    <MESSAGE value="v 0.781 Vercel Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.781 Vercel Update" />
   </component>
 </project>

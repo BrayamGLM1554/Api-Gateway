@@ -29,4 +29,5 @@ app.add_route('/login', login_resource)
 
 # Exportar la aplicación Falcon como un manejador WSGI
 def handler(event, context):
+    # Usar WSGI de Falcon
     return app(event, context)

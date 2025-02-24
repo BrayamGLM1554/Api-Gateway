@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.77 Vercel Update" />
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.78 Vercel Update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -162,7 +162,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740358858256</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="v 0.78 Vercel Update">
+      <option name="closed" value="true" />
+      <created>1740359172780</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1740359172780</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -175,6 +183,7 @@
     <MESSAGE value="v 0.75 Vercel Update" />
     <MESSAGE value="v 0.76 Vercel Update" />
     <MESSAGE value="v 0.77 Vercel Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.77 Vercel Update" />
+    <MESSAGE value="v 0.78 Vercel Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.78 Vercel Update" />
   </component>
 </project>

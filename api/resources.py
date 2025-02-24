@@ -1,7 +1,7 @@
 import falcon
 import jwt
 from datetime import datetime, timedelta
-import pymysql
+import pymysql  # Usamos pymysql para MySQL
 
 # Clave secreta para firmar los tokens JWT (debería ser una variable de entorno en producción)
 SECRET_KEY = "Quetzalcoatl_Project:1554"
@@ -22,7 +22,7 @@ class LoginResource:
 
         # Validar el usuario en la base de datos
         cursor = self.db_connection.cursor()
-        query = "SELECT Nombre, Rol FROM Usuarios WHERE Correo = %s AND Pwd = %s"
+        query = "SELECT Nombre, Rol FROM Usuarios WHERE Correo = %s AND Pwd = %s"  # Usamos %s para MySQL
         cursor.execute(query, (correo, pwd))
         user = cursor.fetchone()
 

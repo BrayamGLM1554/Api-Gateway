@@ -27,6 +27,6 @@ login_resource = LoginResource(get_db_connection())
 # Agregar la ruta para el login
 app.add_route('/login', login_resource)
 
-# Exportar la aplicación como una función WSGI
+# Exportar la aplicación Falcon como un manejador WSGI compatible con Vercel
 def handler(event, context):
-    return app
+    return app(event, context)

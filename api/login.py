@@ -27,6 +27,6 @@ login_resource = LoginResource(get_db_connection())
 # Agregar la ruta para el login
 app.add_route('/login', login_resource)
 
-# Exportar la aplicación para Vercel
+# Exportar la aplicación como una función WSGI
 def handler(event, context):
     return app

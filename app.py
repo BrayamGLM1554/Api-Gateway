@@ -1,7 +1,7 @@
 import os
 import falcon
-from resources import LoginResource
 import pymysql
+from resources import LoginResource
 
 # Configuración de la conexión a la base de datos
 def get_db_connection():
@@ -27,7 +27,7 @@ login_resource = LoginResource(get_db_connection())
 # Agregar la ruta para el login
 app.add_route('/login', login_resource)
 
-# Ejecutar la aplicación localmente
+# Ejecutar la aplicación localmente con Waitress
 if __name__ == '__main__':
     from waitress import serve
     print("Servidor corriendo en http://0.0.0.0:8000")

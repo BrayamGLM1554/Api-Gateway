@@ -18,8 +18,8 @@ def get_db_connection():
         print(f"Error al conectar a la base de datos: {e}")
         raise falcon.HTTPInternalServerError('Database error', 'No se pudo conectar a la base de datos.')
 
-# Crear la aplicación Falcon
-app = falcon.App()
+# Crear la aplicación Falcon usando ASGI
+app = falcon.asgi.App()
 
 # Crear una instancia del recurso de login
 login_resource = LoginResource(get_db_connection())
@@ -27,6 +27,6 @@ login_resource = LoginResource(get_db_connection())
 # Agregar la ruta para el login
 app.add_route('/login', login_resource)
 
-# Exportar la aplicación Falcon como un manejador WSGI compatible con Vercel
-def handler(event, context):
-    return app(event, context)
+# Exportar la aplicación Falcon como un manejador compatible con ASGI
+async def handler(scope, receive, send):
+    await app(scope, receive, send)

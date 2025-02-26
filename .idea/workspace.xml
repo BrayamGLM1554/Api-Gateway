@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.783 Vercel Update">
-      <change beforePath="$PROJECT_DIR$/api/login.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vercel.json" beforeDir="false" />
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.79 RailWay Update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +204,23 @@
       <option name="project" value="LOCAL" />
       <updated>1740360357323</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="v 0.79 RailWay Update">
+      <option name="closed" value="true" />
+      <created>1740361785191</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1740361785191</updated>
+    </task>
+    <task id="LOCAL-00019" summary="v 0.79 RailWay Update">
+      <option name="closed" value="true" />
+      <created>1740361791711</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1740361791711</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -224,6 +237,7 @@
     <MESSAGE value="v 0.781 Vercel Update" />
     <MESSAGE value="v 0.782 Vercel Update" />
     <MESSAGE value="v 0.783 Vercel Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.783 Vercel Update" />
+    <MESSAGE value="v 0.79 RailWay Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.79 RailWay Update" />
   </component>
 </project>

@@ -1,6 +1,7 @@
 import os
 import falcon
 import pymysql
+from falcon_cors import CORS
 from api.resources import LoginResource
 
 # Configuración de la conexión a la base de datos usando pymysql
@@ -18,8 +19,11 @@ def get_db_connection():
         print(f"Error al conectar a la base de datos: {e}")
         exit(1)
 
-# Crear la aplicación Falcon
-app = falcon.App()
+# Configuración de CORS para permitir todas las direcciones
+cors = CORS(allow_all_origins=True, allow_all_headers=True, allow_all_methods=True)
+
+# Crear la aplicación Falcon con el middleware CORS
+app = falcon.App(middleware=[cors.middleware])
 
 # Crear una instancia del recurso de login con la conexión a la base de datos
 login_resource = LoginResource(get_db_connection())

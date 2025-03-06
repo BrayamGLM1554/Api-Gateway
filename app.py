@@ -40,11 +40,17 @@ class Database:
 # Instancia de la base de datos
 db = Database()
 
-# Configuración de CORS para permitir cualquier origen
-cors = CORS(allow_all_origins=True, allow_all_headers=True, allow_all_methods=True)
+# Configuración de CORS
+allowed_origins = os.getenv('ALLOWED_ORIGINS', '*').split(',')
 
-# Crear la aplicación Falcon con CORS global y autenticación
-app = falcon.App(middleware=[cors.middleware, AuthMiddleware()])
+# CORS restringido para la mayoría de los endpoints
+cors_restricted = CORS(allow_origins_list=allowed_origins, allow_all_headers=True, allow_all_methods=True)
+
+# CORS completamente abierto solo para proveedores
+cors_open = CORS(allow_all_origins=True, allow_all_headers=True, allow_all_methods=True)
+
+# Crear la aplicación Falcon con CORS restringido y autenticación
+app = falcon.App(middleware=[cors_restricted.middleware, AuthMiddleware()])
 
 # Instancias de los recursos
 login_resource = LoginResource(db.get_connection(), active_tokens)
@@ -54,10 +60,12 @@ gateway_sucursales = GatewayResource("sucursales")
 gateway_proveedores = GatewayResource("proveedores")
 gateway_almacen = GatewayResource("almacen")
 gateway_activofijo = GatewayResource("activofijo")
+
+# Instancias de los recursos que requieren CORS abierto
 proveedor_resource = ProveedorResource()
 generar_token_resource = GenerarTokenResource()
 
-# Definir rutas
+# Definir rutas con CORS restringido
 app.add_route('/login', login_resource)
 app.add_route('/maps_api/maps', maps_resource)
 app.add_route('/maps_api/load_map', map_loader_resource)
@@ -65,8 +73,13 @@ app.add_route("/gateway/sucursales", gateway_sucursales)
 app.add_route("/gateway/proveedores", gateway_proveedores)
 app.add_route("/gateway/almacen", gateway_almacen)
 app.add_route("/gateway/activofijo", gateway_activofijo)
+
+# Definir rutas con CORS abierto
 app.add_route('/api/proveedores', proveedor_resource)
 app.add_route('/api/generar_token', generar_token_resource)
+
+# Aplicar CORS abierto manualmente solo a estas rutas
+app.add_middleware(cors_open.middleware)
 
 # Servidor con Waitress
 if __name__ == '__main__':

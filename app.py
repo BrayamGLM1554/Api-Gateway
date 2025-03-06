@@ -40,33 +40,22 @@ class Database:
 # Instancia de la base de datos
 db = Database()
 
+# Configuración de CORS para permitir cualquier origen
+cors = CORS(allow_all_origins=True, allow_all_headers=True, allow_all_methods=True)
+
+# Crear la aplicación Falcon con CORS global y autenticación
+app = falcon.App(middleware=[cors.middleware, AuthMiddleware()])
+
 # Instancias de los recursos
-proveedor_resource = ProveedorResource()
-generar_token_resource = GenerarTokenResource()
-
-# CORS global (actualmente permite cualquier origen, pero preparado para restringir en el futuro)
-cors_global = CORS(allow_all_origins=True, allow_all_headers=True, allow_all_methods=True)
-
-# CORS específico para permitir cualquier origen solo en proveedores (para futuro uso)
-cors_open = CORS(allow_all_origins=True, allow_all_headers=True, allow_all_methods=True)
-
-# Crear la aplicación Falcon con CORS global
-app = falcon.App(middleware=[cors_global.middleware, AuthMiddleware()])
-
-# Instancia del recurso de login con el pool de conexiones
 login_resource = LoginResource(db.get_connection(), active_tokens)
-
-# Instancia del recurso de mapas
 maps_resource = MapsResource(active_tokens)
-
-# Instancia del recurso de carga de mapas
 map_loader_resource = MapLoaderResource()
-
-# Instancia de la API Gateway para cada microservicio
 gateway_sucursales = GatewayResource("sucursales")
 gateway_proveedores = GatewayResource("proveedores")
 gateway_almacen = GatewayResource("almacen")
 gateway_activofijo = GatewayResource("activofijo")
+proveedor_resource = ProveedorResource()
+generar_token_resource = GenerarTokenResource()
 
 # Definir rutas
 app.add_route('/login', login_resource)
@@ -78,10 +67,6 @@ app.add_route("/gateway/almacen", gateway_almacen)
 app.add_route("/gateway/activofijo", gateway_activofijo)
 app.add_route('/api/proveedores', proveedor_resource)
 app.add_route('/api/generar_token', generar_token_resource)
-
-# Aplicar CORS abierto solo en estas rutas (para futuro uso cuando restrinjas globalmente)
-app.add_middleware(cors_open.middleware, path_prefix='/api/proveedores')
-app.add_middleware(cors_open.middleware, path_prefix='/api/generar_token')
 
 # Servidor con Waitress
 if __name__ == '__main__':

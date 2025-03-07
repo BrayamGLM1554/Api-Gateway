@@ -79,7 +79,8 @@ app.add_route('/api/proveedores', proveedor_resource)
 app.add_route('/api/generar_token', generar_token_resource)
 
 # Aplicar CORS abierto manualmente solo a estas rutas
-app.add_middleware(cors_open.middleware)
+app.add_route('/api/proveedores', proveedor_resource)
+app.add_route('/api/generar_token', generar_token_resource)
 
 # Servidor con Waitress
 if __name__ == '__main__':

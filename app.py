@@ -41,7 +41,7 @@ class Database:
 db = Database()
 
 # Configuración de CORS
-allowed_origins = os.getenv('ALLOWED_ORIGINS')
+allowed_origins = os.getenv('ALLOWED_ORIGINS', '*').split(',')
 
 # CORS restringido para la mayoría de los endpoints
 cors_restricted = CORS(allow_origins_list=allowed_origins, allow_all_headers=True, allow_all_methods=True)
@@ -54,8 +54,8 @@ app = falcon.App(middleware=[cors_restricted.middleware, AuthMiddleware()])
 
 # Instancias de los recursos
 login_resource = LoginResource(db.get_connection(), active_tokens)
-maps_resource = MapsResource(active_tokens)
 map_loader_resource = MapLoaderResource()
+maps_resource = MapsResource(active_tokens, map_loader_resource)
 gateway_sucursales = GatewayResource("sucursales")
 gateway_proveedores = GatewayResource("proveedores")
 gateway_almacen = GatewayResource("almacen")
@@ -63,7 +63,7 @@ gateway_activofijo = GatewayResource("activofijo")
 
 # Instancias de los recursos que requieren CORS abierto
 proveedor_resource = ProveedorResource()
-generar_token_resource = GenerarTokenResource()
+generar_token_resource = GenerarTokenResource(active_tokens)
 
 # Definir rutas con CORS restringido
 app.add_route('/login', login_resource)
@@ -75,11 +75,7 @@ app.add_route("/gateway/almacen", gateway_almacen)
 app.add_route("/gateway/activofijo", gateway_activofijo)
 
 # Definir rutas con CORS abierto
-app.add_route('/api/proveedores', proveedor_resource)
-app.add_route('/api/generar_token', generar_token_resource)
-
-# Aplicar CORS abierto manualmente solo a estas rutas
-app.add_route('/api/proveedores', proveedor_resource)
+app.add_route('/api/soap/proveedores', proveedor_resource)
 app.add_route('/api/generar_token', generar_token_resource)
 
 # Servidor con Waitress

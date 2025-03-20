@@ -3,16 +3,19 @@ import falcon
 import jwt
 from datetime import datetime, timedelta
 import pymysql
+import re
 
 # Clave secreta para JWT
 SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
 TOKEN_EXPIRATION_MINUTES = 30
 
+# Expresión regular para validar un correo electrónico
+EMAIL_REGEX = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+
 class LoginResource:
     def __init__(self, db_connection, active_tokens):
         self.db_connection = db_connection
         self.active_tokens = active_tokens  # 🔥 Lista de tokens activos en memoria
-
 
     def on_post(self, req, resp):
         """Maneja el login de usuario y genera un token JWT."""
@@ -23,6 +26,10 @@ class LoginResource:
 
             if not correo or not pwd:
                 raise falcon.HTTPBadRequest('Datos incompletos', 'Se requieren correo y contraseña.')
+
+            # Validar el formato del correo electrónico
+            if not re.match(EMAIL_REGEX, correo):
+                raise falcon.HTTPBadRequest('Correo inválido', 'El correo electrónico no es válido.')
 
             # Buscar usuario en la base de datos
             with self.db_connection.cursor(pymysql.cursors.DictCursor) as cursor:

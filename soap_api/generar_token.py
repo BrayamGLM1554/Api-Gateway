@@ -6,6 +6,7 @@ import falcon
 from dotenv import load_dotenv
 
 load_dotenv()
+active_tokens = set()
 
 def get_db_connection():
     return pymysql.connect(
@@ -19,19 +20,33 @@ def get_db_connection():
     )
 
 class GenerarTokenResource:
+    def __init__(self, active_tokens):
+        self.active_tokens = active_tokens
+
     def on_post(self, req, resp):
-        """Genera un nuevo token para un proveedor y lo guarda en la base de datos."""
-        token = secrets.token_urlsafe(32)  # Genera un token seguro
-        expiracion = datetime.now() + timedelta(hours=24)  # Expira en 24 horas
+        """Genera un nuevo token para un proveedor si la sesión está activa."""
+        # Verificar si el token está presente en la cabecera
+        token = req.get_header('Authorization')
+        if not token:
+            raise falcon.HTTPUnauthorized(description="Se requiere un token.")
+        token = token.split(" ")[1] if token.startswith("Bearer ") else token
+
+        # Verificar si el token está activo
+        if token not in self.active_tokens:
+            raise falcon.HTTPUnauthorized(description="Token inválido o sesión expirada.")
+
+        # Generar un nuevo token para el proveedor
+        nuevo_token = secrets.token_urlsafe(32)
+        expiracion = datetime.now() + timedelta(hours=24)
 
         conexion = get_db_connection()
         try:
             with conexion.cursor() as cursor:
                 sql = "INSERT INTO ProveedorTokens (Token, Usado, Expiracion) VALUES (%s, FALSE, %s)"
-                cursor.execute(sql, (token, expiracion))
+                cursor.execute(sql, (nuevo_token, expiracion))
 
             resp.status = falcon.HTTP_201
-            resp.media = {"token": token, "expiracion": expiracion.strftime("%Y-%m-%d %H:%M:%S")}
+            resp.media = {"token": nuevo_token, "expiracion": expiracion.strftime("%Y-%m-%d %H:%M:%S")}
 
         except pymysql.Error as e:
             resp.status = falcon.HTTP_500

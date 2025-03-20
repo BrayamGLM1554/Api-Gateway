@@ -36,7 +36,7 @@ class ProveedorResource:
         try:
             with conexion.cursor() as cursor:
                 # Verificar si el token es válido y no ha expirado
-                sql = "SELECT ID, Expiracion FROM ProveedorTokens WHERE Token = %s AND Usado = FALSE"
+                sql = "SELECT ID, Expiracion FROM Proveedor Tokens WHERE Token = %s AND Usado = FALSE"
                 cursor.execute(sql, (token,))
                 resultado = cursor.fetchone()
 

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.87 Auth validation" />
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.87.2 Auth Middleware" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -354,11 +354,18 @@
       <option name="project" value="LOCAL" />
       <updated>1742520687122</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="v 0.87.2 Auth Middleware">
+      <option name="closed" value="true" />
+      <created>1742521064432</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1742521064432</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.75 Vercel Update" />
     <MESSAGE value="v 0.76 Vercel Update" />
     <MESSAGE value="v 0.77 Vercel Update" />
     <MESSAGE value="v 0.78 Vercel Update" />
@@ -383,7 +390,8 @@
     <MESSAGE value="v 0.86.9 New Method for split" />
     <MESSAGE value="v 0.86.8 Allow al origins Again" />
     <MESSAGE value="v 0.87 Auth validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.87 Auth validation" />
+    <MESSAGE value="v 0.87.2 Auth Middleware" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.87.2 Auth Middleware" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -41,7 +41,7 @@ class Database:
 db = Database()
 
 # Configuración de CORS
-allowed_origins = os.getenv('ALLOWED_ORIGINS', '*').split(',')
+allowed_origins = os.getenv('*').split(',')
 
 # CORS restringido para la mayoría de los endpoints
 cors_restricted = CORS(allow_origins_list=allowed_origins, allow_all_headers=True, allow_all_methods=True)

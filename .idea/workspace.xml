@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.86.4 New changes on CORs" />
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.86.5 New changes on CORS, print origins" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -306,11 +306,18 @@
       <option name="project" value="LOCAL" />
       <updated>1742516829714</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="v 0.86.5 New changes on CORS, print origins">
+      <option name="closed" value="true" />
+      <created>1742517240188</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1742517240188</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="primeros datos" />
     <MESSAGE value="nuevos cambios para el host" />
     <MESSAGE value="configuracion render" />
     <MESSAGE value="mas cambios" />
@@ -335,6 +342,7 @@
     <MESSAGE value="v 0.86.2 Cors New Update" />
     <MESSAGE value="v 0.86.3 Cors Restore" />
     <MESSAGE value="v 0.86.4 New changes on CORs" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.86.4 New changes on CORs" />
+    <MESSAGE value="v 0.86.5 New changes on CORS, print origins" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.86.5 New changes on CORS, print origins" />
   </component>
 </project>

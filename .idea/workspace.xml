@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.86.8 Allow al origins">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.86.9 New Method for split">
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -332,11 +332,18 @@
       <option name="project" value="LOCAL" />
       <updated>1742518191377</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="v 0.86.9 New Method for split">
+      <option name="closed" value="true" />
+      <created>1742518925323</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1742518925323</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="mas cambios" />
     <MESSAGE value="V 0.6" />
     <MESSAGE value="V 0.7" />
     <MESSAGE value="v 0.75 Vercel Update" />
@@ -361,6 +368,7 @@
     <MESSAGE value="v 0.86.5 New changes on CORS, print origins" />
     <MESSAGE value="v 0.86.7 New changes on CORS, print origins and details" />
     <MESSAGE value="v 0.86.8 Allow al origins" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.86.8 Allow al origins" />
+    <MESSAGE value="v 0.86.9 New Method for split" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.86.9 New Method for split" />
   </component>
 </project>

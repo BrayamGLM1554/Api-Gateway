@@ -41,10 +41,13 @@ class Database:
 db = Database()
 
 # Configuración de CORS
-allowed_origins = os.getenv('ALLOWED_ORIGINS', '*').split(',')
+allowed_origins = os.getenv('ALLOWED_ORIGINS', '*')
+if not allowed_origins:  # Si está vacío o None, usa '*'
+    allowed_origins = '*'
+allowed_origins_list = allowed_origins.split(',')
 
 # CORS restringido para la mayoría de los endpoints
-cors_restricted = CORS(allow_origins_list=allowed_origins, allow_all_headers=True, allow_all_methods=True)
+cors_restricted = CORS(allow_origins_list=allowed_origins_list, allow_all_headers=True, allow_all_methods=True)
 
 # CORS completamente abierto solo para proveedores
 cors_open = CORS(allow_all_origins=True, allow_all_headers=True, allow_all_methods=True)

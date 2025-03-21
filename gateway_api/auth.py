@@ -12,7 +12,6 @@ SECRET_KEY = os.getenv("SECRET_KEY", 'Quetzalcoatl_Project')
 # 🔥 Mover `active_tokens` a un nivel más alto para que sea compartido
 active_tokens = set()
 
-
 class AuthMiddleware:
     """Middleware para validar tokens en cada petición."""
 

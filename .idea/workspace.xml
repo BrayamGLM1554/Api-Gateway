@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.86.8 Allow al origins Again">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway_api/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/gateway_api/config.py" afterDir="false" />
-    </list>
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.87 Auth validation" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -349,11 +346,18 @@
       <option name="project" value="LOCAL" />
       <updated>1742519082982</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="v 0.87 Auth validation">
+      <option name="closed" value="true" />
+      <created>1742520687122</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1742520687122</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="V 0.7" />
     <MESSAGE value="v 0.75 Vercel Update" />
     <MESSAGE value="v 0.76 Vercel Update" />
     <MESSAGE value="v 0.77 Vercel Update" />
@@ -378,6 +382,17 @@
     <MESSAGE value="v 0.86.8 Allow al origins" />
     <MESSAGE value="v 0.86.9 New Method for split" />
     <MESSAGE value="v 0.86.8 Allow al origins Again" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.86.8 Allow al origins Again" />
+    <MESSAGE value="v 0.87 Auth validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.87 Auth validation" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/gateway_api/auth.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

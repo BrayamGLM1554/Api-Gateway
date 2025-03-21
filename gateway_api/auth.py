@@ -13,7 +13,18 @@ SECRET_KEY = os.getenv("SECRET_KEY", 'Quetzalcoatl_Project')
 active_tokens = set()
 
 class AuthMiddleware:
-    """Middleware para validar tokens en cada petición."""
+    class AuthMiddleware:
+        def __init__(self, active_tokens):
+            self.active_tokens = active_tokens
+
+        def process_request(self, req, resp):
+            token = req.get_header("Authorization")
+            if not token or token not in self.active_tokens:
+                raise falcon.HTTPUnauthorized(
+                    title="401 Unauthorized", description="Token inválido o sesión expirada."
+                )
+            # Si el token es válido, continuar con la solicitud
+            print("Token válido:", token)
 
     def process_request(self, req, resp):
         # Verificar si la ruta pertenece a la API Gateway

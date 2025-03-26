@@ -3,35 +3,32 @@ import falcon
 import jwt
 from datetime import datetime, timedelta
 import pymysql
-import re
+from dotenv import load_dotenv
+from marshmallow import ValidationError
+from schemas.login_schema import LoginSchema  # 🔥 Importar esquema
 
-# Clave secreta para JWT
-SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
+# Cargar variables de entorno
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+SECRET_KEY = os.getenv('SECRET_KEY', 'Quetzalcoatl_Project')
 TOKEN_EXPIRATION_MINUTES = 30
-
-# Expresión regular para validar un correo electrónico
-EMAIL_REGEX = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
 
 class LoginResource:
     def __init__(self, db_connection, active_tokens):
         self.db_connection = db_connection
-        self.active_tokens = active_tokens  # 🔥 Lista de tokens activos en memoria
+        self.active_tokens = active_tokens
+        self.schema = LoginSchema()  # 🔥 Instancia del validador
 
     def on_post(self, req, resp):
         """Maneja el login de usuario y genera un token JWT."""
         try:
-            data = req.media
-            correo = data.get('correo')
-            pwd = data.get('pwd')
+            raw_data = req.media
+            data = self.schema.load(raw_data)  # 🔥 Validación Marshmallow
 
-            if not correo or not pwd:
-                raise falcon.HTTPBadRequest('Datos incompletos', 'Se requieren correo y contraseña.')
+            correo = data['correo']
+            pwd = data['pwd']
 
-            # Validar el formato del correo electrónico
-            if not re.match(EMAIL_REGEX, correo):
-                raise falcon.HTTPBadRequest('Correo inválido', 'El correo electrónico no es válido.')
-
-            # Buscar usuario en la base de datos
             with self.db_connection.cursor(pymysql.cursors.DictCursor) as cursor:
                 query = "SELECT Nombre, Rol, Pwd FROM Usuarios WHERE Correo = %s"
                 cursor.execute(query, (correo,))
@@ -40,10 +37,10 @@ class LoginResource:
             if user is None:
                 raise falcon.HTTPUnauthorized('Acceso denegado', 'Correo no encontrado.')
 
-            if user['Pwd'] != pwd:  # 🔥 Comparación directa sin hash
+            if user['Pwd'] != pwd:
                 raise falcon.HTTPUnauthorized('Acceso denegado', 'Contraseña incorrecta.')
 
-            # Generar el token JWT
+            # Generar JWT
             token_payload = {
                 'correo': correo,
                 'rol': user['Rol'],
@@ -51,7 +48,6 @@ class LoginResource:
             }
             token = jwt.encode(token_payload, SECRET_KEY, algorithm='HS256')
 
-            # 🔥 Guardar el token en memoria usando el metodo add_active_token
             self.add_active_token(token)
 
             resp.media = {
@@ -62,17 +58,16 @@ class LoginResource:
             }
             resp.status = falcon.HTTP_200
 
+        except ValidationError as err:
+            raise falcon.HTTPBadRequest('Datos inválidos', str(err.messages))
         except pymysql.Error as e:
             raise falcon.HTTPInternalServerError('Error en la base de datos', str(e))
 
     def add_active_token(self, token):
-        """Añadir el token al conjunto de tokens activos."""
         self.active_tokens.add(token)
-        # Imprimir los tokens activos después de agregar uno nuevo
         print("Tokens activos:", self.active_tokens)
 
     def on_delete(self, req, resp):
-        """Cierra sesión eliminando el token de la memoria."""
         token = req.get_header('Authorization')
 
         if not token:

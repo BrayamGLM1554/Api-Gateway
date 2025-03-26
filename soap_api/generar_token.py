@@ -4,6 +4,8 @@ import secrets
 from datetime import datetime, timedelta
 import falcon
 from dotenv import load_dotenv
+from marshmallow import ValidationError
+from schemas.tokens_schema import TokenProviderSchema  # ✅ Importar esquema
 
 load_dotenv()
 active_tokens = set()
@@ -22,20 +24,29 @@ def get_db_connection():
 class GenerarTokenResource:
     def __init__(self, active_tokens):
         self.active_tokens = active_tokens
+        self.schema = TokenProviderSchema()
 
     def on_post(self, req, resp):
         """Genera un nuevo token para un proveedor si la sesión está activa."""
-        # Verificar si el token está presente en la cabecera
+
+        # 🔒 Verificar cabecera de autenticación
         token = req.get_header('Authorization')
         if not token:
             raise falcon.HTTPUnauthorized(description="Se requiere un token.")
         token = token.split(" ")[1] if token.startswith("Bearer ") else token
 
-        # Verificar si el token está activo
         if token not in self.active_tokens:
             raise falcon.HTTPUnauthorized(description="Token inválido o sesión expirada.")
 
-        # Generar un nuevo token para el proveedor
+        # 🔍 (Opcional) Validar datos del body si en el futuro vienen datos
+        try:
+            if req.content_length:
+                raw_data = req.media
+                self.schema.load(raw_data)
+        except ValidationError as err:
+            raise falcon.HTTPBadRequest('Datos inválidos', str(err.messages))
+
+        # 🪙 Generar token para proveedor
         nuevo_token = secrets.token_urlsafe(32)
         expiracion = datetime.now() + timedelta(hours=24)
 
@@ -46,11 +57,13 @@ class GenerarTokenResource:
                 cursor.execute(sql, (nuevo_token, expiracion))
 
             resp.status = falcon.HTTP_201
-            resp.media = {"token": nuevo_token, "expiracion": expiracion.strftime("%Y-%m-%d %H:%M:%S")}
+            resp.media = {
+                "token": nuevo_token,
+                "expiracion": expiracion.strftime("%Y-%m-%d %H:%M:%S")
+            }
 
         except pymysql.Error as e:
             resp.status = falcon.HTTP_500
             resp.media = {"error": f"Error al generar token: {e}"}
-
         finally:
             conexion.close()

@@ -3,6 +3,8 @@ import pymysql
 from datetime import datetime
 import falcon
 from dotenv import load_dotenv
+from marshmallow import ValidationError
+from schemas.proveedor_schema import ProveedorSchema  # ✅ Importar esquema
 
 load_dotenv()
 
@@ -18,55 +20,59 @@ def get_db_connection():
     )
 
 class ProveedorResource:
+    def __init__(self):
+        self.schema = ProveedorSchema()  # ✅ Instancia del validador
+
     def on_post(self, req, resp):
-        data = req.media
-        token = data.get("token")
-        nombre = data.get("nombre")
-        tipo = data.get("tipo")
-        direccion = data.get("direccion")
-        telefono = data.get("telefono")
-        email = data.get("email")
-
-        if not token or not nombre or not tipo or not direccion or not telefono or not email:
-            resp.status = falcon.HTTP_400
-            resp.media = {"error": "Todos los campos son obligatorios"}
-            return
-
-        conexion = get_db_connection()
         try:
-            with conexion.cursor() as cursor:
-                # Verificar si el token es válido y no ha expirado
-                sql = "SELECT ID, Expiracion FROM Proveedor Tokens WHERE Token = %s AND Usado = FALSE"
-                cursor.execute(sql, (token,))
-                resultado = cursor.fetchone()
+            data = self.schema.load(req.media)  # ✅ Validación automática
 
-                if not resultado:
-                    resp.status = falcon.HTTP_400
-                    resp.media = {"error": "Token inválido o ya usado"}
-                    return
+            token = data["token"]
+            nombre = data["nombre"]
+            tipo = data["tipo"]
+            direccion = data["direccion"]
+            telefono = data["telefono"]
+            email = data["email"]
 
-                # Validar expiración del token
-                expiracion = resultado["Expiracion"]
-                if not expiracion or datetime.now() > expiracion:
-                    resp.status = falcon.HTTP_400
-                    resp.media = {"error": "Token expirado"}
-                    return
+            conexion = get_db_connection()
+            try:
+                with conexion.cursor() as cursor:
+                    # Validar token
+                    sql = "SELECT ID, Expiracion FROM ProveedorTokens WHERE Token = %s AND Usado = FALSE"
+                    cursor.execute(sql, (token,))
+                    resultado = cursor.fetchone()
 
-                # Insertar en la tabla Proveedores
-                sql = """INSERT INTO Proveedores (Nombre, Tipo, Direccion, Telefono, Email, FechaAlta, Estatus) 
-                         VALUES (%s, %s, %s, %s, %s, NOW(), 'Activo')"""
-                cursor.execute(sql, (nombre, tipo, direccion, telefono, email))
-                proveedor_id = cursor.lastrowid
+                    if not resultado:
+                        resp.status = falcon.HTTP_400
+                        resp.media = {"error": "Token inválido o ya usado"}
+                        return
 
-                # Marcar el token como usado y vincularlo al proveedor
-                sql = "UPDATE ProveedorTokens SET Usado = TRUE, ProveedorID = %s WHERE ID = %s"
-                cursor.execute(sql, (proveedor_id, resultado["ID"]))
+                    # Validar expiración
+                    expiracion = resultado["Expiracion"]
+                    if not expiracion or datetime.now() > expiracion:
+                        resp.status = falcon.HTTP_400
+                        resp.media = {"error": "Token expirado"}
+                        return
 
-                resp.status = falcon.HTTP_201
-                resp.media = {"mensaje": f"Proveedor registrado con éxito, ID: {proveedor_id}"}
+                    # Insertar proveedor
+                    sql = """INSERT INTO Proveedores (Nombre, Tipo, Direccion, Telefono, Email, FechaAlta, Estatus) 
+                             VALUES (%s, %s, %s, %s, %s, NOW(), 'Activo')"""
+                    cursor.execute(sql, (nombre, tipo, direccion, telefono, email))
+                    proveedor_id = cursor.lastrowid
 
-        except pymysql.Error as e:
-            resp.status = falcon.HTTP_500
-            resp.media = {"error": f"Error al registrar proveedor: {e}"}
-        finally:
-            conexion.close()
+                    # Marcar token como usado
+                    sql = "UPDATE ProveedorTokens SET Usado = TRUE, ProveedorID = %s WHERE ID = %s"
+                    cursor.execute(sql, (proveedor_id, resultado["ID"]))
+
+                    resp.status = falcon.HTTP_201
+                    resp.media = {"mensaje": f"Proveedor registrado con éxito, ID: {proveedor_id}"}
+
+            except pymysql.Error as e:
+                resp.status = falcon.HTTP_500
+                resp.media = {"error": f"Error al registrar proveedor: {e}"}
+            finally:
+                conexion.close()
+
+        except ValidationError as err:
+            resp.status = falcon.HTTP_400
+            resp.media = {"error": "Datos inválidos", "detalles": err.messages}

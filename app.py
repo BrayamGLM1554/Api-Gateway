@@ -2,14 +2,15 @@ import os
 import falcon
 import pymysql
 from falcon_cors import CORS
+from dotenv import load_dotenv
+from common.auth_tokens import active_tokens  # 🔥 Nueva importación centralizada
 from api.resources import LoginResource
-from maps_api.maps import MapsResource, active_tokens
+from maps_api.maps import MapsResource
 from maps_api.map_loader import MapLoaderResource
 from gateway_api.gateway import GatewayResource
 from gateway_api.auth import AuthMiddleware
 from soap_api.proveedores import ProveedorResource
 from soap_api.generar_token import GenerarTokenResource
-from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -31,8 +32,7 @@ class Database:
                 autocommit=True
             )
         except pymysql.Error as e:
-            print(f"Error al conectar a la base de datos: {e}")
-            exit(1)
+            raise RuntimeError(f"❌ Error al conectar a la base de datos: {e}")
 
     def get_connection(self):
         return self.pool
@@ -43,8 +43,8 @@ db = Database()
 # Configuración de CORS para permitir todos los orígenes (*)
 cors_open = CORS(allow_all_origins=True, allow_all_headers=True, allow_all_methods=True)
 
-# Crear la aplicación Falcon con CORS abierto y autenticación
-app = falcon.App(middleware=[cors_open.middleware, AuthMiddleware()])
+# 🔥 Pasar `active_tokens` correctamente a `AuthMiddleware`
+app = falcon.App(middleware=[cors_open.middleware, AuthMiddleware(active_tokens)])
 
 # Instancias de los recursos
 login_resource = LoginResource(db.get_connection(), active_tokens)
@@ -73,5 +73,5 @@ app.add_route('/api/generar_token', generar_token_resource)
 # Servidor con Waitress
 if __name__ == '__main__':
     from waitress import serve
-    print("Servidor corriendo en http://0.0.0.0:8000")
+    print("🚀 Servidor corriendo en http://0.0.0.0:8000")
     serve(app, host='0.0.0.0', port=8000)

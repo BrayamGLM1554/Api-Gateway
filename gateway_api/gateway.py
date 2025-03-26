@@ -4,22 +4,44 @@ from .config import MICROSERVICIOS
 
 class GatewayResource:
     def __init__(self, service_name):
+        self.service_name = service_name
         self.service_url = MICROSERVICIOS.get(service_name)
 
     def forward_request(self, req, method):
-        """Reenvía la solicitud al microservicio correspondiente."""
         if not self.service_url:
             raise falcon.HTTPNotFound(description="Microservicio no encontrado.")
 
-        url = f"{self.service_url}{req.path}"
         headers = {"Authorization": req.get_header("Authorization")}
         body = req.media if req.content_length else None
 
-        response = requests.request(method, url, headers=headers, json=body)
+        print("🔁 Reenviando solicitud al microservicio:")
+        print("📡 Servicio:", self.service_name)
+        print("🌐 URL:", self.service_url)
+        print("📨 Método:", method)
+        print("🧾 Headers:", headers)
+        print("📥 Body:", body)
 
+        try:
+            response = requests.request(method, self.service_url, headers=headers, json=body)
+        except requests.RequestException as e:
+            print("❌ Error al contactar el microservicio:", str(e))
+            raise falcon.HTTPBadGateway(description=f"Error al contactar el microservicio: {str(e)}")
+
+        print("✅ Respuesta recibida del microservicio:")
+        print("🔢 Código de estado:", response.status_code)
+        print("📃 Headers:", response.headers)
+        print("📦 Contenido bruto:", response.text)
+
+        # Preparar respuesta
         resp = falcon.Response()
         resp.status = f"{response.status_code} {response.reason}"
-        resp.media = response.json() if response.content else None
+        try:
+            resp.media = response.json()
+            print("📤 Contenido JSON parseado:", resp.media)
+        except ValueError:
+            resp.text = response.text
+            print("⚠️ Contenido no es JSON, se envía como texto plano.")
+
         return resp
 
     def on_get(self, req, resp):

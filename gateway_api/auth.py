@@ -4,47 +4,51 @@ import jwt
 from dotenv import load_dotenv
 
 # Cargar las variables de entorno desde el archivo .env
-load_dotenv()
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
 # Obtener la clave secreta del .env
 SECRET_KEY = os.getenv("SECRET_KEY", 'Quetzalcoatl_Project')
+print("🔐 Clave secreta cargada desde .env:", SECRET_KEY)
 
-# 🔥 Mover `active_tokens` a un nivel más alto para que sea compartido
+# Tokens activos en memoria (simulación de sesión activa)
 active_tokens = set()
 
 class AuthMiddleware:
-    def __init__(self):
-        # No es necesario pasar active_tokens ya que es una variable global
-        pass
+    def __init__(self, active_tokens):
+        self.active_tokens = active_tokens
 
     def process_request(self, req, resp):
-        # Verificar si la ruta pertenece a la API Gateway
+        # Validar solo rutas que comienzan con /gateway
         if req.path.startswith("/gateway"):
             token = req.get_header("Authorization")
 
             if not token:
                 raise falcon.HTTPUnauthorized(description="Token requerido.")
 
-            # Verificar que el token esté en formato "Bearer <token>"
+            # Verificar si el token tiene formato Bearer
             if token.startswith("Bearer "):
                 token = token.split("Bearer ")[-1].strip()
             else:
                 raise falcon.HTTPUnauthorized(description="Token en formato incorrecto.")
 
-            print("Token recibido:", token)  # Agregado para verificar el token recibido
+            # Imprimir tokens activos y el recibido para diagnóstico
+            print(f"📦 Tokens activos en el servidor: {self.active_tokens}")
+            print(f"➡️ Token recibido en la solicitud: {token}")
 
-            # Verificar si el token está activo
-            if token not in active_tokens:
+            # Verificar si el token está en los tokens activos
+            if token not in self.active_tokens:
+                print("⚠️ El token no está en active_tokens.")
                 raise falcon.HTTPUnauthorized(description="Token inválido o sesión expirada.")
 
+            # Decodificar y validar el token
             try:
-                # Decodificar el token usando la clave secreta
                 payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
-
-                # Almacenar la carga útil del token en el contexto de la petición
                 req.context["user"] = payload
-                print("Token válido:", token)  # Agregado para verificar que el token es válido
+                print("✅ Token válido:", token)
             except jwt.ExpiredSignatureError:
+                print("⏰ Token expirado.")
                 raise falcon.HTTPUnauthorized(description="Token expirado.")
-            except jwt.InvalidTokenError:
+            except jwt.InvalidTokenError as e:
+                print("❌ Token inválido:", str(e))
                 raise falcon.HTTPUnauthorized(description="Token inválido.")

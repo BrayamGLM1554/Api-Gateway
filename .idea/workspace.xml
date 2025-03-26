@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.87.2 Auth Middleware" />
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.87.2 Auth corrections">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/resources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway_api/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/gateway_api/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway_api/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/gateway_api/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway_api/gateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/gateway_api/gateway.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/soap_api/generar_token.py" beforeDir="false" afterPath="$PROJECT_DIR$/soap_api/generar_token.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/soap_api/proveedores.py" beforeDir="false" afterPath="$PROJECT_DIR$/soap_api/proveedores.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -362,11 +373,18 @@
       <option name="project" value="LOCAL" />
       <updated>1742521064432</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="v 0.87.2 Auth corrections">
+      <option name="closed" value="true" />
+      <created>1742521469322</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1742521469322</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.76 Vercel Update" />
     <MESSAGE value="v 0.77 Vercel Update" />
     <MESSAGE value="v 0.78 Vercel Update" />
     <MESSAGE value="v 0.781 Vercel Update" />
@@ -391,7 +409,8 @@
     <MESSAGE value="v 0.86.8 Allow al origins Again" />
     <MESSAGE value="v 0.87 Auth validation" />
     <MESSAGE value="v 0.87.2 Auth Middleware" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.87.2 Auth Middleware" />
+    <MESSAGE value="v 0.87.2 Auth corrections" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.87.2 Auth corrections" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

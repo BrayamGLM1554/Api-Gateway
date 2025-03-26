@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9 Marshmellow, and fix on Auth.py">
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9 Fix SonarQube Warnings">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/resources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway_api/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/gateway_api/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway_api/gateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/gateway_api/gateway.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -388,11 +391,18 @@
       <option name="project" value="LOCAL" />
       <updated>1742967133577</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="v 0.9 Fix SonarQube Warnings">
+      <option name="closed" value="true" />
+      <created>1743003313841</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1743003313841</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.78 Vercel Update" />
     <MESSAGE value="v 0.781 Vercel Update" />
     <MESSAGE value="v 0.782 Vercel Update" />
     <MESSAGE value="v 0.783 Vercel Update" />
@@ -417,7 +427,8 @@
     <MESSAGE value="v 0.87.2 Auth Middleware" />
     <MESSAGE value="v 0.87.2 Auth corrections" />
     <MESSAGE value="v 0.9 Marshmellow, and fix on Auth.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.9 Marshmellow, and fix on Auth.py" />
+    <MESSAGE value="v 0.9 Fix SonarQube Warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.9 Fix SonarQube Warnings" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -18,18 +18,17 @@ class LoginResource:
     def __init__(self, db_connection, active_tokens):
         self.db_connection = db_connection
         self.active_tokens = active_tokens  # {'by_token': set(), 'by_user': dict()}
-        self.schema = LoginSchema()  # Instancia del validador
+        self.schema = LoginSchema()
 
     def on_post(self, req, resp):
         """Maneja el login de usuario y genera un token JWT."""
         try:
             raw_data = req.media
-            data = self.schema.load(raw_data)  # Validación Marshmallow
+            data = self.schema.load(raw_data)
 
             correo = data['correo']
             pwd = data['pwd']
 
-            # Verificar si ya tiene sesión activa
             if correo in self.active_tokens['by_user']:
                 raise falcon.HTTPConflict(
                     title='Sesión activa',
@@ -42,12 +41,17 @@ class LoginResource:
                 user = cursor.fetchone()
 
             if user is None:
-                raise falcon.HTTPUnauthorized('Acceso denegado', 'Correo no encontrado.')
+                raise falcon.HTTPUnauthorized(
+                    title='Acceso denegado',
+                    description='Correo no encontrado.'
+                )
 
             if user['Pwd'] != pwd:
-                raise falcon.HTTPUnauthorized('Acceso denegado', 'Contraseña incorrecta.')
+                raise falcon.HTTPUnauthorized(
+                    title='Acceso denegado',
+                    description='Contraseña incorrecta.'
+                )
 
-            # Generar JWT
             token_payload = {
                 'correo': correo,
                 'rol': user['Rol'],
@@ -66,9 +70,20 @@ class LoginResource:
             resp.status = falcon.HTTP_200
 
         except ValidationError as err:
-            raise falcon.HTTPBadRequest('Datos inválidos', str(err.messages))
+            raise falcon.HTTPBadRequest(
+                title='Datos inválidos',
+                description=str(err.messages)
+            )
         except pymysql.Error as e:
-            raise falcon.HTTPInternalServerError('Error en la base de datos', str(e))
+            raise falcon.HTTPInternalServerError(
+                title='Error en la base de datos',
+                description=str(e)
+            )
+        except Exception as e:
+            raise falcon.HTTPInternalServerError(
+                title='Error inesperado',
+                description=str(e)
+            )
 
     def add_active_token(self, correo, token):
         self.active_tokens['by_user'][correo] = token
@@ -79,21 +94,33 @@ class LoginResource:
         token = req.get_header('Authorization')
 
         if not token:
-            raise falcon.HTTPBadRequest('Error', 'Se requiere un token para cerrar sesión.')
+            raise falcon.HTTPBadRequest(
+                title='Error',
+                description='Se requiere un token para cerrar sesión.'
+            )
 
         try:
             decoded = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
             correo = decoded.get('correo')
         except jwt.ExpiredSignatureError:
-            raise falcon.HTTPUnauthorized('Token expirado', 'Inicia sesión nuevamente.')
+            raise falcon.HTTPUnauthorized(
+                title='Token expirado',
+                description='Inicia sesión nuevamente.'
+            )
         except jwt.InvalidTokenError:
-            raise falcon.HTTPUnauthorized('Token inválido', 'No se pudo validar el token.')
+            raise falcon.HTTPUnauthorized(
+                title='Token inválido',
+                description='No se pudo validar el token.'
+            )
 
         if token in self.active_tokens['by_token']:
             self.active_tokens['by_token'].remove(token)
             self.active_tokens['by_user'].pop(correo, None)
             resp.media = {'mensaje': 'Sesión cerrada correctamente'}
         else:
-            raise falcon.HTTPUnauthorized('Error', 'Token inválido o sesión ya cerrada.')
+            raise falcon.HTTPUnauthorized(
+                title='Error',
+                description='Token inválido o sesión ya cerrada.'
+            )
 
         resp.status = falcon.HTTP_200

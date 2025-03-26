@@ -1,1 +1,4 @@
-active_tokens = set()
+active_tokens = {
+    'by_token': set(),
+    'by_user': {}
+}

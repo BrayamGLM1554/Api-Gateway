@@ -11,37 +11,29 @@ load_dotenv(dotenv_path)
 SECRET_KEY = os.getenv("SECRET_KEY", 'Quetzalcoatl_Project')
 print("🔐 Clave secreta cargada desde .env:", SECRET_KEY)
 
-# Tokens activos en memoria (simulación de sesión activa)
-active_tokens = set()
-
 class AuthMiddleware:
     def __init__(self, active_tokens):
-        self.active_tokens = active_tokens
+        self.active_tokens = active_tokens  # {'by_token': set(), 'by_user': dict()}
 
     def process_request(self, req, resp):
-        # Validar solo rutas que comienzan con /gateway
         if req.path.startswith("/gateway"):
             token = req.get_header("Authorization")
 
             if not token:
                 raise falcon.HTTPUnauthorized(description="Token requerido.")
 
-            # Verificar si el token tiene formato Bearer
             if token.startswith("Bearer "):
                 token = token.split("Bearer ")[-1].strip()
             else:
                 raise falcon.HTTPUnauthorized(description="Token en formato incorrecto.")
 
-            # Imprimir tokens activos y el recibido para diagnóstico
-            print(f"📦 Tokens activos en el servidor: {self.active_tokens}")
+            print("📦 Tokens activos en el servidor:", self.active_tokens['by_token'])
             print(f"➡️ Token recibido en la solicitud: {token}")
 
-            # Verificar si el token está en los tokens activos
-            if token not in self.active_tokens:
+            if token not in self.active_tokens['by_token']:
                 print("⚠️ El token no está en active_tokens.")
                 raise falcon.HTTPUnauthorized(description="Token inválido o sesión expirada.")
 
-            # Decodificar y validar el token
             try:
                 payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
                 req.context["user"] = payload

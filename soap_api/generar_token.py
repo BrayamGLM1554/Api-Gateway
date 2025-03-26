@@ -8,7 +8,6 @@ from marshmallow import ValidationError
 from schemas.tokens_schema import TokenProviderSchema  # ✅ Importar esquema
 
 load_dotenv()
-active_tokens = set()
 
 def get_db_connection():
     return pymysql.connect(
@@ -23,7 +22,7 @@ def get_db_connection():
 
 class GenerarTokenResource:
     def __init__(self, active_tokens):
-        self.active_tokens = active_tokens
+        self.active_tokens = active_tokens  # {'by_token': set(), 'by_user': dict()}
         self.schema = TokenProviderSchema()
 
     def on_post(self, req, resp):
@@ -35,7 +34,7 @@ class GenerarTokenResource:
             raise falcon.HTTPUnauthorized(description="Se requiere un token.")
         token = token.split(" ")[1] if token.startswith("Bearer ") else token
 
-        if token not in self.active_tokens:
+        if token not in self.active_tokens['by_token']:
             raise falcon.HTTPUnauthorized(description="Token inválido o sesión expirada.")
 
         # 🔍 (Opcional) Validar datos del body si en el futuro vienen datos

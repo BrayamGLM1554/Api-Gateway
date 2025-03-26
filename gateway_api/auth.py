@@ -15,7 +15,7 @@ class AuthMiddleware:
     def __init__(self, active_tokens):
         self.active_tokens = active_tokens  # {'by_token': set(), 'by_user': dict()}
 
-    def process_request(self, req, resp):
+    def process_request(self, req, _resp):
         if req.path.startswith("/gateway"):
             token = req.get_header("Authorization")
 

@@ -1,11 +1,11 @@
 import os
 import falcon
 import jwt
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import pymysql
 from dotenv import load_dotenv
 from marshmallow import ValidationError
-from schemas.login_schema import LoginSchema  # 🔥 Importar esquema
+from schemas.login_schema import LoginSchema
 
 # Cargar variables de entorno
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
@@ -18,13 +18,13 @@ class LoginResource:
     def __init__(self, db_connection, active_tokens):
         self.db_connection = db_connection
         self.active_tokens = active_tokens  # {'by_token': set(), 'by_user': dict()}
-        self.schema = LoginSchema()  # 🔥 Instancia del validador
+        self.schema = LoginSchema()  # Instancia del validador
 
     def on_post(self, req, resp):
         """Maneja el login de usuario y genera un token JWT."""
         try:
             raw_data = req.media
-            data = self.schema.load(raw_data)  # 🔥 Validación Marshmallow
+            data = self.schema.load(raw_data)  # Validación Marshmallow
 
             correo = data['correo']
             pwd = data['pwd']
@@ -51,7 +51,7 @@ class LoginResource:
             token_payload = {
                 'correo': correo,
                 'rol': user['Rol'],
-                'exp': datetime.utcnow() + timedelta(minutes=TOKEN_EXPIRATION_MINUTES)
+                'exp': datetime.now(timezone.utc) + timedelta(minutes=TOKEN_EXPIRATION_MINUTES)
             }
             token = jwt.encode(token_payload, SECRET_KEY, algorithm='HS256')
 

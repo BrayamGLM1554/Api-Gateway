@@ -44,7 +44,7 @@ class AuthMiddleware:
                 )
 
             print("📦 Tokens activos:", self.active_tokens['by_token'])
-            print(f"➡️ Token recibido:", token)
+            print(f"➡️ Token recibido: {token}")
 
             if token not in self.active_tokens['by_token']:
                 print("⚠️ Token no está activo.")

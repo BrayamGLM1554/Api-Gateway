@@ -30,11 +30,11 @@ class LoginResource:
             pwd = data['pwd']
 
             # Validar sesión activa por usuario
-            if correo in self.active_tokens['by_user']:
-                raise falcon.HTTPConflict(
-                    title='Sesión activa',
-                    description='Usuario con sesión iniciada. Múltiples sesiones no están permitidas.'
-                )
+            #if correo in self.active_tokens['by_user']:
+            #    raise falcon.HTTPConflict(
+            #       title='Sesión activa',
+            #        description='Usuario con sesión iniciada. Múltiples sesiones no están permitidas.'
+            #    )
 
             with self.db_connection.cursor(pymysql.cursors.DictCursor) as cursor:
                 query = "SELECT Nombre, Rol, Pwd FROM Usuarios WHERE Correo = %s"

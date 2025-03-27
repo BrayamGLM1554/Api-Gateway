@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.1 Fix problems with logs">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.1 Get by ID" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -420,11 +418,18 @@
       <option name="project" value="LOCAL" />
       <updated>1743045042390</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="v 0.9.1 Get by ID">
+      <option name="closed" value="true" />
+      <created>1743050018108</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1743050018108</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.79 RailWay Update" />
     <MESSAGE value="v 0.81 API Gateway (errores), API SOAP, y API MAPAS" />
     <MESSAGE value="v 0.82 CORS Globales y Especificos" />
     <MESSAGE value="v 0.83 CORS Globales" />
@@ -449,6 +454,7 @@
     <MESSAGE value="v 0.9 new DAST fix" />
     <MESSAGE value="v 0.9 new fix SonarQube Warning" />
     <MESSAGE value="v 0.9.1 Fix problems with logs" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.1 Fix problems with logs" />
+    <MESSAGE value="v 0.9.1 Get by ID" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.1 Get by ID" />
   </component>
 </project>

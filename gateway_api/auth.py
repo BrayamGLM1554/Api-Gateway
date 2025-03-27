@@ -19,7 +19,7 @@ class AuthMiddleware:
 
     def process_request(self, req, _resp):
         if req.path.startswith("/gateway"):
-            token_header = req.get_header("Authorization")
+            token_header = req.get_header("authorization")
 
             if not token_header:
                 raise falcon.HTTPUnauthorized(

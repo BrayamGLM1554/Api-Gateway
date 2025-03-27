@@ -83,7 +83,7 @@ app.add_route("/gateway/sucursales", gateway_sucursales)
 app.add_route("/gateway/proveedores", gateway_proveedores)
 app.add_route("/gateway/almacen", gateway_almacen)
 app.add_route("/gateway/activofijo", gateway_activofijo)
-app.add_route("/reconocimiento", gateway_reconocimiento)
+app.add_route("/gateway/reconocimiento", gateway_reconocimiento)
 app.add_route('/api/soap/proveedores', proveedor_resource)
 app.add_route('/api/generar_token', generar_token_resource)
 app.add_route('/metrics', metrics_resource)  # ✅ NUEVO endpoint para métricas

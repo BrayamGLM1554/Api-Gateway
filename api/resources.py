@@ -14,7 +14,7 @@ load_dotenv(dotenv_path)
 
 # Claves desde entorno (Railway las necesita definidas en el dashboard)
 SECRET_KEY = os.getenv('SECRET_KEY', 'Quetzalcoatl_Project')
-TOKEN_EXPIRATION_MINUTES = 30
+TOKEN_EXPIRATION_MINUTES = 60
 
 class LoginResource:
     def __init__(self, db_connection, active_tokens):

@@ -9,7 +9,6 @@ dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 SECRET_KEY = os.getenv("SECRET_KEY", 'Quetzalcoatl_Project')
-print("🔐 Clave secreta cargada desde .env:", SECRET_KEY)
 
 # Regex básica para formato JWT: 3 bloques separados por puntos
 JWT_PATTERN = re.compile(r'^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+$')

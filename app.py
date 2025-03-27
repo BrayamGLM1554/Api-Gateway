@@ -17,9 +17,6 @@ from metrics.metrics_resource import MetricsResource  # ✅ Nuevo recurso
 
 # 🔐 Cargar variables de entorno
 load_dotenv()
-print("📦 DB_HOST:", os.getenv("DB_HOST"))
-print("📦 DB_USER:", os.getenv("DB_USER"))
-print("📦 DB_NAME:", os.getenv("DB_NAME"))
 
 # 🛠️ Configuración del pool de conexiones
 class Database:
@@ -92,5 +89,4 @@ app.add_route('/metrics', metrics_resource)  # ✅ NUEVO endpoint para métricas
 # 🔥 Servidor local
 if __name__ == '__main__':
     from waitress import serve
-    print("🚀 Servidor corriendo en http://0.0.0.0:8000")
     serve(app, host='0.0.0.0', port=8000)

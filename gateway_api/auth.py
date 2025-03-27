@@ -16,7 +16,7 @@ class AuthMiddleware:
         self.active_tokens = active_tokens  # {'by_token': set(), 'by_user': dict()}
 
     def process_request(self, req, _resp):
-        if req.path.startswith("/gateway"):
+        if req.path.startswith("/gateway") and req.method != "OPTIONS":
             print("📥 Petición recibida:")
             print("🔹 Método:", req.method)
             print("🔹 Ruta:", req.path)

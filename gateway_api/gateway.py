@@ -1,5 +1,6 @@
 import falcon
 import requests
+from urllib.parse import urlencode
 from .config import MICROSERVICIOS
 
 class GatewayResource:
@@ -7,22 +8,23 @@ class GatewayResource:
         self.service_name = service_name
         self.service_url = MICROSERVICIOS.get(service_name)
 
-    def forward_request(self, req, method):
+    def forward_request(self, req, method, append_path=""):
         if not self.service_url:
             raise falcon.HTTPNotFound(description="Microservicio no encontrado.")
 
+        url = f"{self.service_url}{append_path}"
         headers = {"Authorization": req.get_header("Authorization")}
         body = req.media if req.content_length else None
 
         print("🔁 Reenviando solicitud al microservicio:")
         print("📡 Servicio:", self.service_name)
-        print("🌐 URL:", self.service_url)
+        print("🌐 URL:", url)
         print("📨 Método:", method)
         print("🧾 Headers:", headers)
         print("📥 Body:", body)
 
         try:
-            response = requests.request(method, self.service_url, headers=headers, json=body)
+            response = requests.request(method, url, headers=headers, json=body)
         except requests.RequestException as e:
             print("❌ Error al contactar el microservicio:", str(e))
             raise falcon.HTTPBadGateway(description=f"Error al contactar el microservicio: {str(e)}")
@@ -45,7 +47,10 @@ class GatewayResource:
         return resp
 
     def on_get(self, req, resp):
-        resp_obj = self.forward_request(req, "GET")
+        # Verifica si hay un parámetro 'id' en la URL
+        id_param = req.get_param('id')
+        append_path = f"/{id_param}" if id_param else ""
+        resp_obj = self.forward_request(req, "GET", append_path)
         resp.status = resp_obj.status
         resp.media = resp_obj.media
 

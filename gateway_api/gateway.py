@@ -1,6 +1,5 @@
 import falcon
 import requests
-from urllib.parse import urlencode
 from .config import MICROSERVICIOS
 
 class GatewayResource:

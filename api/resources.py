@@ -1,16 +1,17 @@
 import os
 import falcon
 import jwt
-from datetime import datetime, timedelta, timezone
 import pymysql
+from datetime import datetime, timedelta, timezone
 from dotenv import load_dotenv
 from marshmallow import ValidationError
 from schemas.login_schema import LoginSchema
 
-# Cargar variables de entorno
+# Cargar variables de entorno desde .env (solo útil en local)
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
+# Claves desde entorno (Railway las necesita definidas en el dashboard)
 SECRET_KEY = os.getenv('SECRET_KEY', 'Quetzalcoatl_Project')
 TOKEN_EXPIRATION_MINUTES = 30
 
@@ -21,14 +22,14 @@ class LoginResource:
         self.schema = LoginSchema()
 
     def on_post(self, req, resp):
-        """Maneja el login de usuario y genera un token JWT."""
         try:
             raw_data = req.media
-            data = self.schema.load(raw_data)
+            data = self.schema.load(raw_data)  # 🔒 Validación Marshmallow
 
             correo = data['correo']
             pwd = data['pwd']
 
+            # Validar sesión activa por usuario
             if correo in self.active_tokens['by_user']:
                 raise falcon.HTTPConflict(
                     title='Sesión activa',
@@ -52,6 +53,7 @@ class LoginResource:
                     description='Contraseña incorrecta.'
                 )
 
+            # Crear token JWT
             token_payload = {
                 'correo': correo,
                 'rol': user['Rol'],
@@ -77,7 +79,7 @@ class LoginResource:
         except pymysql.Error as e:
             raise falcon.HTTPInternalServerError(
                 title='Error en la base de datos',
-                description=str(e)
+                description=str(e) or "Verifica las variables de entorno en Railway"
             )
         except Exception as e:
             raise falcon.HTTPInternalServerError(

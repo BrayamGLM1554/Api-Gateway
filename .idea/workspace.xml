@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9 new DAST fix">
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9 new fix SonarQube Warning">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -404,11 +404,18 @@
       <option name="project" value="LOCAL" />
       <updated>1743005996623</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="v 0.9 new fix SonarQube Warning">
+      <option name="closed" value="true" />
+      <created>1743006791844</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1743006791844</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.782 Vercel Update" />
     <MESSAGE value="v 0.783 Vercel Update" />
     <MESSAGE value="v 0.79 RailWay Update" />
     <MESSAGE value="v 0.81 API Gateway (errores), API SOAP, y API MAPAS" />
@@ -433,6 +440,7 @@
     <MESSAGE value="v 0.9 Marshmellow, and fix on Auth.py" />
     <MESSAGE value="v 0.9 Fix SonarQube Warnings" />
     <MESSAGE value="v 0.9 new DAST fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.9 new DAST fix" />
+    <MESSAGE value="v 0.9 new fix SonarQube Warning" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.9 new fix SonarQube Warning" />
   </component>
 </project>

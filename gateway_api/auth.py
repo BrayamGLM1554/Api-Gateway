@@ -2,15 +2,13 @@ import os
 import re
 import falcon
 import jwt
+import json
 from dotenv import load_dotenv
 
-# Cargar variables de entorno desde .env
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 SECRET_KEY = os.getenv("SECRET_KEY", 'Quetzalcoatl_Project')
-
-# Regex básica para formato JWT: 3 bloques separados por puntos
 JWT_PATTERN = re.compile(r'^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+$')
 
 class AuthMiddleware:
@@ -19,15 +17,35 @@ class AuthMiddleware:
 
     def process_request(self, req, _resp):
         if req.path.startswith("/gateway"):
-            token_header = req.get_header("authorization")
+            print("📥 Petición recibida:")
+            print("🔹 Método:", req.method)
+            print("🔹 Ruta:", req.path)
+            print("🔹 IP:", req.remote_addr)
+            print("🔹 Headers:", dict(req.headers))
+
+            # Leer el cuerpo si existe
+            try:
+                if req.content_length:
+                    body = req.stream.read().decode("utf-8")
+                    print("🔹 Body:", json.loads(body))
+                    # Volver a asignar el stream para que Falcon no falle después
+                    req.stream = falcon.Request().stream
+                    req.stream.write(body.encode())
+                    req.stream.seek(0)
+            except Exception as e:
+                print("⚠️ No se pudo leer el cuerpo:", str(e))
+
+            token_header = req.get_header("Authorization")
 
             if not token_header:
+                print("❌ No se recibió header Authorization.")
                 raise falcon.HTTPUnauthorized(
                     title="Token requerido",
                     description="Debe incluir un token en la cabecera Authorization."
                 )
 
             if not token_header.startswith("Bearer "):
+                print("❌ Formato Bearer incorrecto:", token_header)
                 raise falcon.HTTPUnauthorized(
                     title="Formato incorrecto",
                     description="El token debe estar en formato Bearer <token>."
@@ -35,8 +53,8 @@ class AuthMiddleware:
 
             token = token_header.split("Bearer ")[-1].strip()
 
-            # Validación del formato JWT
             if not JWT_PATTERN.match(token):
+                print("❌ Token con formato inválido:", token)
                 raise falcon.HTTPUnauthorized(
                     title="Token mal formado",
                     description="El token no tiene un formato válido."
@@ -62,8 +80,8 @@ class AuthMiddleware:
                     title="Token expirado",
                     description="Debe volver a iniciar sesión."
                 )
-            except jwt.InvalidTokenError:
-                print("❌ Token inválido.")
+            except jwt.InvalidTokenError as e:
+                print("❌ Token inválido:", str(e))
                 raise falcon.HTTPUnauthorized(
                     title="Token inválido",
                     description="No se pudo validar el token."

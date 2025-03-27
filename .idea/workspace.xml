@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.4 new time expiration on token" />
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.4 New head" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,22 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740096760093</updated>
-    </task>
-    <task id="LOCAL-00005" summary="configuracion render">
-      <option name="closed" value="true" />
-      <created>1740100420919</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1740100420919</updated>
-    </task>
-    <task id="LOCAL-00006" summary="mas cambios">
-      <option name="closed" value="true" />
-      <created>1740100570501</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1740100570501</updated>
     </task>
     <task id="LOCAL-00007" summary="V 0.6">
       <option name="closed" value="true" />
@@ -458,12 +442,26 @@
       <option name="project" value="LOCAL" />
       <updated>1743118953995</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="v 0.9.4 SonarQube Fixes">
+      <option name="closed" value="true" />
+      <created>1743119234907</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1743119234907</updated>
+    </task>
+    <task id="LOCAL-00055" summary="v 0.9.4 New head">
+      <option name="closed" value="true" />
+      <created>1743119317782</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1743119317782</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.8 Cors New Update" />
-    <MESSAGE value="v 0.86.2 Cors New Update" />
     <MESSAGE value="v 0.86.3 Cors Restore" />
     <MESSAGE value="v 0.86.4 New changes on CORs" />
     <MESSAGE value="v 0.86.5 New changes on CORS, print origins" />
@@ -487,6 +485,8 @@
     <MESSAGE value="v 0.9.4 new Endpoint" />
     <MESSAGE value="v 0.9.4 new Endpoint, fix auth problem" />
     <MESSAGE value="v 0.9.4 new time expiration on token" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.4 new time expiration on token" />
+    <MESSAGE value="v 0.9.4 SonarQube Fixes" />
+    <MESSAGE value="v 0.9.4 New head" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.4 New head" />
   </component>
 </project>

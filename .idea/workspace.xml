@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.2 finish version I guess" />
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.3 Clean logs in console">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -442,11 +444,18 @@
       <option name="project" value="LOCAL" />
       <updated>1743095746810</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="v 0.9.3 Clean logs in console">
+      <option name="closed" value="true" />
+      <created>1743096707763</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1743096707763</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.83 CORS Globales" />
     <MESSAGE value="v 0.84 CORS Globales y Especificos" />
     <MESSAGE value="v 0.84.2 CORS Globales y Especificos" />
     <MESSAGE value="v 0.84.3 CORS Globales y Especificos" />
@@ -471,6 +480,7 @@
     <MESSAGE value="v 0.9.1 Get by ID" />
     <MESSAGE value="v 0.9.1 any count of sessions" />
     <MESSAGE value="v 0.9.2 finish version I guess" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.2 finish version I guess" />
+    <MESSAGE value="v 0.9.3 Clean logs in console" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.3 Clean logs in console" />
   </component>
 </project>

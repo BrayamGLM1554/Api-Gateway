@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.4 new Endpoint, fix auth problem" />
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.4 new time expiration on token" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,14 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740096760093</updated>
-    </task>
-    <task id="LOCAL-00004" summary="nuevos cambios para el host">
-      <option name="closed" value="true" />
-      <created>1740100126489</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1740100126489</updated>
     </task>
     <task id="LOCAL-00005" summary="configuracion render">
       <option name="closed" value="true" />
@@ -458,11 +450,18 @@
       <option name="project" value="LOCAL" />
       <updated>1743118663578</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="v 0.9.4 new time expiration on token">
+      <option name="closed" value="true" />
+      <created>1743118953995</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1743118953995</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.85 New Validation on Soap API" />
     <MESSAGE value="v 0.8 Cors New Update" />
     <MESSAGE value="v 0.86.2 Cors New Update" />
     <MESSAGE value="v 0.86.3 Cors Restore" />
@@ -487,6 +486,7 @@
     <MESSAGE value="v 0.9.3 just logs On Railway" />
     <MESSAGE value="v 0.9.4 new Endpoint" />
     <MESSAGE value="v 0.9.4 new Endpoint, fix auth problem" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.4 new Endpoint, fix auth problem" />
+    <MESSAGE value="v 0.9.4 new time expiration on token" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.4 new time expiration on token" />
   </component>
 </project>

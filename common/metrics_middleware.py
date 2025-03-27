@@ -10,10 +10,10 @@ class MetricsMiddleware:
         self.request_times = []
         self.by_route = defaultdict(lambda: {"count": 0, "errors": 0, "total_time": 0.0})
 
-    def process_request(self, req, resp):
+    def process_request(self, req, _resp):
         req.context.start_time = time.time()
 
-    def process_response(self, req, resp, resource, req_succeeded):
+    def process_response(self, req, resp, _resource, req_succeeded):
         start_time = getattr(req.context, "start_time", None)
         if start_time is None:
             # Petición fallida antes de iniciar métricas

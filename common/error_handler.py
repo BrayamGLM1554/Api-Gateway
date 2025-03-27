@@ -1,7 +1,7 @@
 import falcon
 from common.logger import logger
 
-def handle_http_error(req, resp, ex, params):
+def handle_http_error(_req, resp, ex, _params):
     resp.status = ex.status
     resp.content_type = 'application/json'
     resp.media = {
@@ -17,7 +17,7 @@ def handle_http_error(req, resp, ex, params):
     elif 400 <= ex.status_code < 500:
         logger.warning(f"⚠️ Error HTTP {status} ({tipo}): {ex.title} - {ex.description}")
 
-def handle_exception(req, resp, ex, params):
+def handle_exception(_req, resp, ex, _params):
     """Captura cualquier excepción inesperada no controlada"""
     logger.error(f"❌ Excepción no manejada: {str(ex)}")
     resp.status = falcon.HTTP_500

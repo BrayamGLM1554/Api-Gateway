@@ -14,7 +14,12 @@ class MetricsMiddleware:
         req.context.start_time = time.time()
 
     def process_response(self, req, resp, resource, req_succeeded):
-        duration = time.time() - req.context.start_time
+        start_time = getattr(req.context, "start_time", None)
+        if start_time is None:
+            # Petición fallida antes de iniciar métricas
+            return
+
+        duration = time.time() - start_time
         self.total_requests += 1
         self.request_times.append(duration)
 

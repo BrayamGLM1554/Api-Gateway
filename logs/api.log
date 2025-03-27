@@ -1,0 +1,37 @@
+
+2025-03-27 10:48:55 [INFO] API: \U0001f510 Intento de login: maria.gomez@example.com
+2025-03-27 10:48:55 [INFO] API: \U0001f9e9 Token generado y activado para: maria.gomez@example.com
+2025-03-27 10:48:55 [INFO] API: \u2705 Login exitoso: maria.gomez@example.com (rol: Administrador)
+2025-03-27 10:48:55 [INFO] API: \U0001f4c8 POST /login - 200 OK - 0.159s
+2025-03-27 10:49:24 [INFO] API: \U0001f510 Intento de login: juan.perez@example.com
+2025-03-27 10:49:24 [WARNING] API: \u274c Login fallido - contraseña incorrecta: juan.perez@example.com
+2025-03-27 10:49:24 [ERROR] API: \u274c Excepción inesperada en login: <HTTPUnauthorized: 401 Unauthorized>
+2025-03-27 10:49:24 [ERROR] API: \U0001f6d1 Error HTTP 500 Internal Server Error (HTTPInternalServerError): Error inesperado - <HTTPUnauthorized: 401 Unauthorized>
+2025-03-27 10:49:24 [WARNING] API: \U0001f4c9 POST /login - FALLO (status real desconocido) - 0.157s
+2025-03-27 10:49:44 [WARNING] API: \u26a0\ufe0f Datos inválidos en login: {'correo': ['Not a valid email address.']}
+2025-03-27 10:49:44 [WARNING] API: \u26a0\ufe0f Error HTTP 400 Bad Request (HTTPBadRequest): Datos inválidos - {'correo': ['Not a valid email address.']}
+2025-03-27 10:49:44 [WARNING] API: \U0001f4c9 POST /login - FALLO (status real desconocido) - 0.000s
+2025-03-27 10:57:22 [INFO] waitress: Serving on http://0.0.0.0:8000
+2025-03-27 10:57:28 [INFO] API: \U0001f510 Intento de login: maria.gomez@example.com
+2025-03-27 10:57:28 [INFO] API: \U0001f9e9 Token generado y activado para: maria.gomez@example.com
+2025-03-27 10:57:28 [INFO] API: \u2705 Login exitoso: maria.gomez@example.com (rol: Administrador)
+2025-03-27 10:57:28 [INFO] API: \U0001f4c8 POST /login - 200 OK - 0.160s
+2025-03-27 10:57:32 [INFO] API: \U0001f510 Intento de login: juan.perez@example.com
+2025-03-27 10:57:32 [WARNING] API: \u274c Login fallido - contraseña incorrecta: juan.perez@example.com
+2025-03-27 10:57:32 [WARNING] API: \u26a0\ufe0f Error HTTP 401 Unauthorized (HTTPUnauthorized): Acceso denegado - Contraseña incorrecta.
+2025-03-27 10:57:32 [WARNING] API: \U0001f4c9 POST /login - FALLO (status real desconocido) - 0.162s
+2025-03-27 10:57:35 [WARNING] API: \u26a0\ufe0f Datos inválidos en login: {'correo': ['Not a valid email address.']}
+2025-03-27 10:57:35 [WARNING] API: \u26a0\ufe0f Error HTTP 400 Bad Request (HTTPBadRequest): Datos inválidos - {'correo': ['Not a valid email address.']}
+2025-03-27 10:57:35 [WARNING] API: \U0001f4c9 POST /login - FALLO (status real desconocido) - 0.000s
+2025-03-27 11:06:34 [INFO] waitress: Serving on http://0.0.0.0:8000
+2025-03-27 11:06:45 [INFO] API: \U0001f510 Intento de login: maria.gomez@example.com
+2025-03-27 11:06:45 [INFO] API: \U0001f9e9 Token generado y activado para: maria.gomez@example.com
+2025-03-27 11:06:45 [INFO] API: \u2705 Login exitoso: maria.gomez@example.com (rol: Administrador)
+2025-03-27 11:06:45 [INFO] API: \U0001f4c8 POST /login - 200 OK - 0.200s
+2025-03-27 11:06:50 [INFO] API: \U0001f510 Intento de login: juan.perez@example.com
+2025-03-27 11:06:50 [WARNING] API: \u274c Login fallido - contraseña incorrecta: juan.perez@example.com
+2025-03-27 11:06:50 [WARNING] API: \u26a0\ufe0f Error HTTP 401 Unauthorized (HTTPUnauthorized): Acceso denegado - Contraseña incorrecta.
+2025-03-27 11:06:50 [WARNING] API: \U0001f4c9 POST /login - FALLO (status real desconocido) - 0.196s
+2025-03-27 11:06:55 [WARNING] API: \u26a0\ufe0f Datos inválidos en login: {'correo': ['Not a valid email address.']}
+2025-03-27 11:06:55 [WARNING] API: \u26a0\ufe0f Error HTTP 400 Bad Request (HTTPBadRequest): Datos inválidos - {'correo': ['Not a valid email address.']}
+2025-03-27 11:06:55 [WARNING] API: \U0001f4c9 POST /login - FALLO (status real desconocido) - 0.000s

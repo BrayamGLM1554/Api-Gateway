@@ -6,6 +6,7 @@ from datetime import datetime, timedelta, timezone
 from dotenv import load_dotenv
 from marshmallow import ValidationError
 from schemas.login_schema import LoginSchema
+from common.logger import logger  # ✅ Registro de eventos
 
 # Cargar variables de entorno desde .env (solo útil en local)
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
@@ -29,12 +30,7 @@ class LoginResource:
             correo = data['correo']
             pwd = data['pwd']
 
-            # Validar sesión activa por usuario
-            #if correo in self.active_tokens['by_user']:
-            #    raise falcon.HTTPConflict(
-            #       title='Sesión activa',
-            #        description='Usuario con sesión iniciada. Múltiples sesiones no están permitidas.'
-            #    )
+            logger.info(f"🔐 Intento de login: {correo}")
 
             with self.db_connection.cursor(pymysql.cursors.DictCursor) as cursor:
                 query = "SELECT Nombre, Rol, Pwd FROM Usuarios WHERE Correo = %s"
@@ -42,18 +38,19 @@ class LoginResource:
                 user = cursor.fetchone()
 
             if user is None:
+                logger.warning(f"❌ Login fallido - correo no encontrado: {correo}")
                 raise falcon.HTTPUnauthorized(
                     title='Acceso denegado',
                     description='Correo no encontrado.'
                 )
 
             if user['Pwd'] != pwd:
+                logger.warning(f"❌ Login fallido - contraseña incorrecta: {correo}")
                 raise falcon.HTTPUnauthorized(
                     title='Acceso denegado',
                     description='Contraseña incorrecta.'
                 )
 
-            # Crear token JWT
             token_payload = {
                 'correo': correo,
                 'rol': user['Rol'],
@@ -62,6 +59,8 @@ class LoginResource:
             token = jwt.encode(token_payload, SECRET_KEY, algorithm='HS256')
 
             self.add_active_token(correo, token)
+
+            logger.info(f"✅ Login exitoso: {correo} (rol: {user['Rol']})")
 
             resp.media = {
                 'mensaje': 'Login exitoso',
@@ -72,25 +71,30 @@ class LoginResource:
             resp.status = falcon.HTTP_200
 
         except ValidationError as err:
+            logger.warning(f"⚠️ Datos inválidos en login: {err.messages}")
             raise falcon.HTTPBadRequest(
                 title='Datos inválidos',
                 description=str(err.messages)
             )
-        except pymysql.Error as e:
+        except pymysql.MySQLError as e:
+            logger.error(f"❌ Error en base de datos: {e}")
             raise falcon.HTTPInternalServerError(
                 title='Error en la base de datos',
-                description=str(e) or "Verifica las variables de entorno en Railway"
+                description='Error de conexión o consulta.'
             )
+        except falcon.HTTPError as http_err:
+            raise http_err  # ✅ Re-lanzar errores Falcon sin atraparlos como genéricos
         except Exception as e:
+            logger.error(f"❌ Excepción inesperada: {e}")
             raise falcon.HTTPInternalServerError(
                 title='Error inesperado',
-                description=str(e)
+                description='Ocurrió un error desconocido.'
             )
 
     def add_active_token(self, correo, token):
         self.active_tokens['by_user'][correo] = token
         self.active_tokens['by_token'].add(token)
-        print("Tokens activos:", self.active_tokens)
+        logger.info(f"🧩 Token generado y activado para: {correo}")
 
     def on_delete(self, req, resp):
         token = req.get_header('Authorization')
@@ -118,6 +122,7 @@ class LoginResource:
         if token in self.active_tokens['by_token']:
             self.active_tokens['by_token'].remove(token)
             self.active_tokens['by_user'].pop(correo, None)
+            logger.info(f"👋 Cierre de sesión exitoso para: {correo}")
             resp.media = {'mensaje': 'Sesión cerrada correctamente'}
         else:
             raise falcon.HTTPUnauthorized(

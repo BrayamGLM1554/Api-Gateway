@@ -18,14 +18,19 @@ class GatewayResource:
             "Content-Type": "application/json"
         }
 
+        # Leer y preparar el cuerpo solo para POST o PUT
         body = None
         if method in ("POST", "PUT"):
             try:
                 raw_json = req.bounded_stream.read()
-                data = json.loads(raw_json.decode("utf-8")) if raw_json else None
+                print("📥 JSON crudo recibido:", raw_json)  # DEBUG: ver si llega algo
+                decoded = raw_json.decode("utf-8") if raw_json else None
+                print("🧾 JSON decodificado:", decoded)
+
+                data = json.loads(decoded) if decoded else None
                 if data:
-                    # 🔁 Encapsular como 'proveedor'
-                    body = { "proveedor": data }
+                    body = {"proveedor": data}
+                    print("📦 JSON enviado al microservicio:", json.dumps(body, indent=2))
                 else:
                     raise falcon.HTTPBadRequest(title="Cuerpo vacío", description="El cuerpo no puede estar vacío.")
             except Exception as e:
@@ -45,7 +50,7 @@ class GatewayResource:
             print("❌ Error al contactar el microservicio:", str(e))
             raise falcon.HTTPBadGateway(description=f"Error al contactar el microservicio: {str(e)}")
 
-        print("✅ Respuesta recibida:")
+        print("✅ Respuesta recibida del microservicio:")
         print("🔢 Código:", response.status_code)
         print("📦 Contenido:", response.text)
 

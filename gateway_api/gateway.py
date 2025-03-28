@@ -13,24 +13,24 @@ class GatewayResource:
             raise falcon.HTTPNotFound(description="Microservicio no encontrado.")
 
         url = f"{self.service_url}{append_path}"
-        content_type = req.get_header("Content-Type") or "application/json"
         headers = {
             "Authorization": req.get_header("Authorization"),
-            "Content-Type": content_type
+            "Content-Type": "application/json"
         }
 
-        print("🧾 Header Content-Type:", content_type)
-
-        # Leer body solo si es POST o PUT
+        body = None
         if method in ("POST", "PUT"):
             try:
                 raw_json = req.bounded_stream.read()
-                body = json.loads(raw_json.decode("utf-8")) if raw_json else None
+                data = json.loads(raw_json.decode("utf-8")) if raw_json else None
+                if data:
+                    # 🔁 Encapsular como 'proveedor'
+                    body = { "proveedor": data }
+                else:
+                    raise falcon.HTTPBadRequest(title="Cuerpo vacío", description="El cuerpo no puede estar vacío.")
             except Exception as e:
-                print("❌ Error al procesar el JSON del cuerpo:", str(e))
+                print("❌ Error al procesar JSON:", str(e))
                 raise falcon.HTTPBadRequest(title="Invalid JSON", description="Cuerpo mal formado.")
-        else:
-            body = None
 
         print("🔁 Reenviando solicitud al microservicio:")
         print("📡 Servicio:", self.service_name)
@@ -45,20 +45,16 @@ class GatewayResource:
             print("❌ Error al contactar el microservicio:", str(e))
             raise falcon.HTTPBadGateway(description=f"Error al contactar el microservicio: {str(e)}")
 
-        print("✅ Respuesta recibida del microservicio:")
-        print("🔢 Código de estado:", response.status_code)
-        print("📃 Headers:", response.headers)
-        print("📦 Contenido bruto:", response.text)
+        print("✅ Respuesta recibida:")
+        print("🔢 Código:", response.status_code)
+        print("📦 Contenido:", response.text)
 
-        # Preparar respuesta
         resp = falcon.Response()
         resp.status = f"{response.status_code} {response.reason}"
         try:
             resp.media = response.json()
-            print("📤 Contenido JSON parseado:", resp.media)
         except ValueError:
             resp.text = response.text
-            print("⚠️ Contenido no es JSON, se envía como texto plano.")
 
         return resp
 

@@ -13,7 +13,13 @@ class GatewayResource:
             raise falcon.HTTPNotFound(description="Microservicio no encontrado.")
 
         url = f"{self.service_url}{append_path}"
-        headers = {"Authorization": req.get_header("Authorization")}
+        content_type = req.get_header("Content-Type") or "application/json"
+        headers = {
+            "Authorization": req.get_header("Authorization"),
+            "Content-Type": content_type
+        }
+
+        print("🧾 Header Content-Type:", content_type)
 
         # Leer body solo si es POST o PUT
         if method in ("POST", "PUT"):

@@ -2,9 +2,9 @@ import os
 import re
 import falcon
 import jwt
-import json
 from dotenv import load_dotenv
 
+# Cargar variables de entorno
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
@@ -22,18 +22,6 @@ class AuthMiddleware:
             print("🔹 Ruta:", req.path)
             print("🔹 IP:", req.remote_addr)
             print("🔹 Headers:", dict(req.headers))
-
-            # Leer el cuerpo si existe
-            try:
-                if req.content_length:
-                    body = req.stream.read().decode("utf-8")
-                    print("🔹 Body:", json.loads(body))
-                    # Volver a asignar el stream para que Falcon no falle después
-                    req.stream = falcon.Request().stream
-                    req.stream.write(body.encode())
-                    req.stream.seek(0)
-            except Exception as e:
-                print("⚠️ No se pudo leer el cuerpo:", str(e))
 
             token_header = req.get_header("Authorization")
 

@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.6.3.2 POST fixed problem">
-      <change beforePath="$PROJECT_DIR$/gateway_api/gateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/gateway_api/gateway.py" afterDir="false" />
-    </list>
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.6.3.4 POST fixed problem" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,22 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740096760093</updated>
-    </task>
-    <task id="LOCAL-00014" summary="v 0.78 Vercel Update">
-      <option name="closed" value="true" />
-      <created>1740359447858</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1740359447858</updated>
-    </task>
-    <task id="LOCAL-00015" summary="v 0.781 Vercel Update">
-      <option name="closed" value="true" />
-      <created>1740359732855</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1740359732855</updated>
     </task>
     <task id="LOCAL-00016" summary="v 0.782 Vercel Update">
       <option name="closed" value="true" />
@@ -460,12 +442,26 @@
       <option name="project" value="LOCAL" />
       <updated>1743124768050</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="v 0.9.6.3.3 POST fixed problem">
+      <option name="closed" value="true" />
+      <created>1743125426599</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1743125426599</updated>
+    </task>
+    <task id="LOCAL-00064" summary="v 0.9.6.3.4 POST fixed problem">
+      <option name="closed" value="true" />
+      <created>1743125592632</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1743125592632</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.87 Auth validation" />
-    <MESSAGE value="v 0.87.2 Auth Middleware" />
     <MESSAGE value="v 0.87.2 Auth corrections" />
     <MESSAGE value="v 0.9 Marshmellow, and fix on Auth.py" />
     <MESSAGE value="v 0.9 Fix SonarQube Warnings" />
@@ -489,6 +485,8 @@
     <MESSAGE value="v 0.9.6.2 Get by Id Fixed, new version" />
     <MESSAGE value="v 0.9.6.3 POST fixed problem" />
     <MESSAGE value="v 0.9.6.3.2 POST fixed problem" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.6.3.2 POST fixed problem" />
+    <MESSAGE value="v 0.9.6.3.3 POST fixed problem" />
+    <MESSAGE value="v 0.9.6.3.4 POST fixed problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.6.3.4 POST fixed problem" />
   </component>
 </project>

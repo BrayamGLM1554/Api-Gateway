@@ -1,5 +1,6 @@
 import falcon
 import requests
+import json
 from .config import MICROSERVICIOS
 
 class GatewayResource:
@@ -13,7 +14,17 @@ class GatewayResource:
 
         url = f"{self.service_url}{append_path}"
         headers = {"Authorization": req.get_header("Authorization")}
-        body = req.media if req.content_length else None
+
+        # Leer body solo si es POST o PUT
+        if method in ("POST", "PUT"):
+            try:
+                raw_json = req.bounded_stream.read()
+                body = json.loads(raw_json.decode("utf-8")) if raw_json else None
+            except Exception as e:
+                print("❌ Error al procesar el JSON del cuerpo:", str(e))
+                raise falcon.HTTPBadRequest(title="Invalid JSON", description="Cuerpo mal formado.")
+        else:
+            body = None
 
         print("🔁 Reenviando solicitud al microservicio:")
         print("📡 Servicio:", self.service_name)
@@ -46,7 +57,6 @@ class GatewayResource:
         return resp
 
     def on_get(self, req, resp, id=None):
-        # Preferimos el ID de la ruta si existe
         append_path = f"/{id}" if id else ""
         resp_obj = self.forward_request(req, "GET", append_path)
         resp.status = resp_obj.status
@@ -66,5 +76,3 @@ class GatewayResource:
         resp_obj = self.forward_request(req, "DELETE")
         resp.status = resp_obj.status
         resp.media = resp_obj.media
-
-

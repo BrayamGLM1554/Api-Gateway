@@ -29,7 +29,7 @@ class GatewayResource:
 
                 data = json.loads(decoded) if decoded else None
                 if data:
-                    body = {"proveedor": data}
+                    body = data
                     print("📦 JSON enviado al microservicio:", json.dumps(body, indent=2))
                 else:
                     raise falcon.HTTPBadRequest(title="Cuerpo vacío", description="El cuerpo no puede estar vacío.")

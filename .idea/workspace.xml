@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.6.3.4 POST fixed problem" />
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.6.3.5 Auth Fix" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,14 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740096760093</updated>
-    </task>
-    <task id="LOCAL-00016" summary="v 0.782 Vercel Update">
-      <option name="closed" value="true" />
-      <created>1740360117676</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1740360117676</updated>
     </task>
     <task id="LOCAL-00017" summary="v 0.783 Vercel Update">
       <option name="closed" value="true" />
@@ -458,11 +450,18 @@
       <option name="project" value="LOCAL" />
       <updated>1743125592632</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="v 0.9.6.3.5 Auth Fix">
+      <option name="closed" value="true" />
+      <created>1743125805136</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1743125805136</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.87.2 Auth corrections" />
     <MESSAGE value="v 0.9 Marshmellow, and fix on Auth.py" />
     <MESSAGE value="v 0.9 Fix SonarQube Warnings" />
     <MESSAGE value="v 0.9 new DAST fix" />
@@ -487,6 +486,7 @@
     <MESSAGE value="v 0.9.6.3.2 POST fixed problem" />
     <MESSAGE value="v 0.9.6.3.3 POST fixed problem" />
     <MESSAGE value="v 0.9.6.3.4 POST fixed problem" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.6.3.4 POST fixed problem" />
+    <MESSAGE value="v 0.9.6.3.5 Auth Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.6.3.5 Auth Fix" />
   </component>
 </project>

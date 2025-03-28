@@ -67,3 +67,5 @@ class GatewayResource:
         resp_obj = self.forward_request(req, "DELETE")
         resp.status = resp_obj.status
         resp.media = resp_obj.media
+
+

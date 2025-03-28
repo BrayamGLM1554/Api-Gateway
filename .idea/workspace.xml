@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.5 fix cors">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.6 Get by Id Fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway_api/gateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/gateway_api/gateway.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,14 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740096760093</updated>
-    </task>
-    <task id="LOCAL-00010" summary="v 0.76 Vercel Update">
-      <option name="closed" value="true" />
-      <created>1740357675853</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1740357675853</updated>
     </task>
     <task id="LOCAL-00011" summary="v 0.77 Vercel Update">
       <option name="closed" value="true" />
@@ -462,11 +452,18 @@
       <option name="project" value="LOCAL" />
       <updated>1743120079961</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="v 0.9.6 Get by Id Fixed">
+      <option name="closed" value="true" />
+      <created>1743123536946</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1743123536946</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.86.7 New changes on CORS, print origins and details" />
     <MESSAGE value="v 0.86.8 Allow al origins" />
     <MESSAGE value="v 0.86.9 New Method for split" />
     <MESSAGE value="v 0.86.8 Allow al origins Again" />
@@ -491,6 +488,7 @@
     <MESSAGE value="v 0.9.4 print request" />
     <MESSAGE value="v 0.9.4 fix" />
     <MESSAGE value="v 0.9.5 fix cors" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.5 fix cors" />
+    <MESSAGE value="v 0.9.6 Get by Id Fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.6 Get by Id Fixed" />
   </component>
 </project>

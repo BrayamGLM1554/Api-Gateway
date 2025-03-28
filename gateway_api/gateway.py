@@ -45,10 +45,9 @@ class GatewayResource:
 
         return resp
 
-    def on_get(self, req, resp):
-        # Verifica si hay un parámetro 'id' en la URL
-        id_param = req.get_param('id')
-        append_path = f"/{id_param}" if id_param else ""
+    def on_get(self, req, resp, id=None):
+        # Preferimos el ID de la ruta si existe
+        append_path = f"/{id}" if id else ""
         resp_obj = self.forward_request(req, "GET", append_path)
         resp.status = resp_obj.status
         resp.media = resp_obj.media

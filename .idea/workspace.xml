@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.6.3.6 Auth Fix">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/error_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/error_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/logger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/metrics_middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/metrics_middleware.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway_api/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/gateway_api/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway_api/gateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/gateway_api/gateway.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/api.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/api.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/soap_api/generar_token.py" beforeDir="false" afterPath="$PROJECT_DIR$/soap_api/generar_token.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/soap_api/proveedores.py" beforeDir="false" afterPath="$PROJECT_DIR$/soap_api/proveedores.py" afterDir="false" />
-    </list>
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.6.3.7 Nuevas validaciones" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,13 +43,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/braya/OneDrive/Documentos/GitHub/Api-Gateway"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -77,14 +66,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740096760093</updated>
-    </task>
-    <task id="LOCAL-00018" summary="v 0.79 RailWay Update">
-      <option name="closed" value="true" />
-      <created>1740361785191</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1740361785191</updated>
     </task>
     <task id="LOCAL-00019" summary="v 0.79 RailWay Update">
       <option name="closed" value="true" />
@@ -470,11 +451,18 @@
       <option name="project" value="LOCAL" />
       <updated>1743126172875</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="v 0.9.6.3.7 Nuevas validaciones">
+      <option name="closed" value="true" />
+      <created>1743393705062</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1743393705062</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.9 Fix SonarQube Warnings" />
     <MESSAGE value="v 0.9 new DAST fix" />
     <MESSAGE value="v 0.9 new fix SonarQube Warning" />
     <MESSAGE value="v 0.9.1 Fix problems with logs" />
@@ -499,7 +487,8 @@
     <MESSAGE value="v 0.9.6.3.4 POST fixed problem" />
     <MESSAGE value="v 0.9.6.3.5 Auth Fix" />
     <MESSAGE value="v 0.9.6.3.6 Auth Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.6.3.6 Auth Fix" />
+    <MESSAGE value="v 0.9.6.3.7 Nuevas validaciones" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.6.3.7 Nuevas validaciones" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

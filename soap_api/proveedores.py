@@ -4,7 +4,7 @@ from datetime import datetime
 import falcon
 from dotenv import load_dotenv
 from marshmallow import ValidationError
-from schemas.proveedor_schema import ProveedorSchema  # ✅ Importar esquema
+from schemas.proveedor_schema import ProveedorSchema
 
 load_dotenv()
 
@@ -21,11 +21,11 @@ def get_db_connection():
 
 class ProveedorResource:
     def __init__(self):
-        self.schema = ProveedorSchema()  # ✅ Instancia del validador
+        self.schema = ProveedorSchema()  # Instancia del validador
 
     def on_post(self, req, resp):
         try:
-            data = self.schema.load(req.media)  # ✅ Validación automática
+            data = self.schema.load(req.media)  # Validación automática
 
             token = data["token"]
             nombre = data["nombre"]

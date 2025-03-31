@@ -14,12 +14,12 @@ formatter = logging.Formatter(
     datefmt="%Y-%m-%d %H:%M:%S"
 )
 
-# ✅ Log a consola (Railway captura stdout)
+# Log a consola (Railway captura stdout)
 console_handler = logging.StreamHandler()
 console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 
-# ✅ Log también a archivo (útil en local)
+# Log también a archivo (útil en local)
 file_handler = logging.FileHandler("logs/api.log")
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)

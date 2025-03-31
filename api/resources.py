@@ -25,12 +25,12 @@ class LoginResource:
     def on_post(self, req, resp):
         try:
             raw_data = req.media
-            data = self.schema.load(raw_data)  # 🔒 Validación Marshmallow
+            data = self.schema.load(raw_data)  # Validación Marshmallow
 
             correo = data['correo']
             pwd = data['pwd']
 
-            logger.info(f"🔐 Intento de login: {correo}")
+            logger.info(f"Intento de login: {correo}")
 
             with self.db_connection.cursor(pymysql.cursors.DictCursor) as cursor:
                 query = "SELECT Nombre, Rol, Pwd FROM Usuarios WHERE Correo = %s"
@@ -38,14 +38,14 @@ class LoginResource:
                 user = cursor.fetchone()
 
             if user is None:
-                logger.warning(f"❌ Login fallido - correo no encontrado: {correo}")
+                logger.warning(f" Login fallido - correo no encontrado: {correo}")
                 raise falcon.HTTPUnauthorized(
                     title='Acceso denegado',
                     description='Correo no encontrado.'
                 )
 
             if user['Pwd'] != pwd:
-                logger.warning(f"❌ Login fallido - contraseña incorrecta: {correo}")
+                logger.warning(f" Login fallido - contraseña incorrecta: {correo}")
                 raise falcon.HTTPUnauthorized(
                     title='Acceso denegado',
                     description='Contraseña incorrecta.'
@@ -60,7 +60,7 @@ class LoginResource:
 
             self.add_active_token(correo, token)
 
-            logger.info(f"✅ Login exitoso: {correo} (rol: {user['Rol']})")
+            logger.info(f"Login exitoso: {correo} (rol: {user['Rol']})")
 
             resp.media = {
                 'mensaje': 'Login exitoso',
@@ -71,21 +71,21 @@ class LoginResource:
             resp.status = falcon.HTTP_200
 
         except ValidationError as err:
-            logger.warning(f"⚠️ Datos inválidos en login: {err.messages}")
+            logger.warning(f"Datos inválidos en login: {err.messages}")
             raise falcon.HTTPBadRequest(
                 title='Datos inválidos',
                 description=str(err.messages)
             )
         except pymysql.MySQLError as e:
-            logger.error(f"❌ Error en base de datos: {e}")
+            logger.error(f"Error en base de datos: {e}")
             raise falcon.HTTPInternalServerError(
                 title='Error en la base de datos',
                 description='Error de conexión o consulta.'
             )
         except falcon.HTTPError as http_err:
-            raise http_err  # ✅ Re-lanzar errores Falcon sin atraparlos como genéricos
+            raise http_err  # Re-lanzar errores Falcon sin atraparlos como genéricos
         except Exception as e:
-            logger.error(f"❌ Excepción inesperada: {e}")
+            logger.error(f" Excepción inesperada: {e}")
             raise falcon.HTTPInternalServerError(
                 title='Error inesperado',
                 description='Ocurrió un error desconocido.'
@@ -94,7 +94,7 @@ class LoginResource:
     def add_active_token(self, correo, token):
         self.active_tokens['by_user'][correo] = token
         self.active_tokens['by_token'].add(token)
-        logger.info(f"🧩 Token generado y activado para: {correo}")
+        logger.info(f"Token generado y activado para: {correo}")
 
     def on_delete(self, req, resp):
         token = req.get_header('Authorization')
@@ -122,7 +122,7 @@ class LoginResource:
         if token in self.active_tokens['by_token']:
             self.active_tokens['by_token'].remove(token)
             self.active_tokens['by_user'].pop(correo, None)
-            logger.info(f"👋 Cierre de sesión exitoso para: {correo}")
+            logger.info(f"Cierre de sesión exitoso para: {correo}")
             resp.media = {'mensaje': 'Sesión cerrada correctamente'}
         else:
             raise falcon.HTTPUnauthorized(

@@ -35,3 +35,167 @@
 2025-03-27 11:06:55 [WARNING] API: \u26a0\ufe0f Datos inválidos en login: {'correo': ['Not a valid email address.']}
 2025-03-27 11:06:55 [WARNING] API: \u26a0\ufe0f Error HTTP 400 Bad Request (HTTPBadRequest): Datos inválidos - {'correo': ['Not a valid email address.']}
 2025-03-27 11:06:55 [WARNING] API: \U0001f4c9 POST /login - FALLO (status real desconocido) - 0.000s
+2025-03-29 20:50:13 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 20:50:13 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 20:50:13 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 20:50:13 [INFO] API: POST /login - 200 OK - 0.148s
+2025-03-29 20:50:40 [INFO] API: GET /gateway/proveedores - 200 OK - 1.678s
+2025-03-29 20:50:45 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Entrada inválida - Campo 'nombre' contiene una entrada sospechosa de XSS o SQLi.
+2025-03-29 20:51:50 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 20:51:50 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 20:51:50 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 20:51:50 [INFO] API: POST /login - 200 OK - 0.146s
+2025-03-29 20:52:06 [INFO] API: GET /gateway/proveedores - 200 OK - 0.440s
+2025-03-29 20:52:24 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Entrada inválida - Campo 'nombre' contiene una entrada sospechosa de XSS o SQLi.
+2025-03-29 20:53:17 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Invalid JSON - Cuerpo mal formado.
+2025-03-29 20:53:17 [WARNING] API: POST /gateway/proveedores - FALLO (400 Bad Request) - 0.001s
+2025-03-29 20:53:22 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Invalid JSON - Cuerpo mal formado.
+2025-03-29 20:53:22 [WARNING] API: POST /gateway/proveedores - FALLO (400 Bad Request) - 0.002s
+2025-03-29 20:53:46 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Invalid JSON - Cuerpo mal formado.
+2025-03-29 20:53:46 [WARNING] API: POST /gateway/proveedores - FALLO (400 Bad Request) - 0.001s
+2025-03-29 20:54:12 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Invalid JSON - Cuerpo mal formado.
+2025-03-29 20:54:12 [WARNING] API: POST /gateway/proveedores - FALLO (400 Bad Request) - 0.000s
+2025-03-29 20:56:30 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Invalid JSON - Cuerpo mal formado.
+2025-03-29 20:56:30 [WARNING] API: POST /gateway/proveedores - FALLO (400 Bad Request) - 0.001s
+2025-03-29 20:56:38 [INFO] API: GET /gateway/proveedores - 200 OK - 0.504s
+2025-03-29 20:56:41 [INFO] API: GET /gateway/proveedores - 200 OK - 0.452s
+2025-03-29 20:56:46 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Invalid JSON - Cuerpo mal formado.
+2025-03-29 20:56:46 [WARNING] API: POST /gateway/proveedores - FALLO (400 Bad Request) - 0.001s
+2025-03-29 20:58:12 [WARNING] API:  Error HTTP 400 Bad Request (MediaNotFoundError): Invalid JSON - Could not parse an empty JSON body
+2025-03-29 20:58:12 [WARNING] API: POST /login - FALLO (400 Bad Request) - 0.001s
+2025-03-29 20:58:43 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 20:58:43 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 20:58:43 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 20:58:43 [INFO] API: POST /login - 200 OK - 0.146s
+2025-03-29 20:58:56 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Invalid JSON - Cuerpo mal formado.
+2025-03-29 20:58:56 [WARNING] API: POST /gateway/proveedores - FALLO (400 Bad Request) - 0.000s
+2025-03-29 21:00:39 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 21:00:39 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 21:00:39 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 21:00:39 [INFO] API: POST /login - 200 OK - 0.144s
+2025-03-29 21:00:49 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Invalid JSON - Cuerpo mal formado.
+2025-03-29 21:00:49 [WARNING] API: POST /gateway/proveedores - FALLO (400 Bad Request) - 0.001s
+2025-03-29 21:00:51 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Invalid JSON - Cuerpo mal formado.
+2025-03-29 21:00:51 [WARNING] API: POST /gateway/proveedores - FALLO (400 Bad Request) - 0.000s
+2025-03-29 21:02:20 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 21:02:21 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 21:02:21 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 21:02:21 [INFO] API: POST /login - 200 OK - 0.152s
+2025-03-29 21:02:33 [INFO] API: POST /gateway/proveedores - 201 Created - 1.992s
+2025-03-29 21:02:43 [ERROR] API: Excepción no manejada: GatewayResource.on_delete() got an unexpected keyword argument 'id'
+2025-03-29 21:02:43 [WARNING] API: DELETE /gateway/proveedores/15 - FALLO (500 Internal Server Error) - 0.000s
+2025-03-29 21:03:51 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 21:03:51 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 21:03:51 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 21:03:51 [INFO] API: POST /login - 200 OK - 0.149s
+2025-03-29 21:04:04 [ERROR] API: Excepción no manejada: GatewayResource.on_delete() got an unexpected keyword argument 'id'
+2025-03-29 21:04:04 [WARNING] API: DELETE /gateway/proveedores/15 - FALLO (500 Internal Server Error) - 0.001s
+2025-03-29 21:06:03 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 21:06:03 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 21:06:03 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 21:06:03 [INFO] API: POST /login - 200 OK - 0.146s
+2025-03-29 21:06:14 [INFO] API: DELETE /gateway/proveedores/15 - 204 No Content - 0.855s
+2025-03-29 21:06:20 [WARNING] API: GET /gateway/proveedores/15 - FALLO (404 Not Found) - 0.435s
+2025-03-29 21:06:24 [INFO] API: GET /gateway/proveedores/ - 200 OK - 0.415s
+2025-03-29 21:07:43 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 21:07:43 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 21:07:43 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 21:07:43 [INFO] API: POST /login - 200 OK - 0.150s
+2025-03-29 21:08:22 [INFO] API: PUT /gateway/proveedores/14 - 204 No Content - 0.540s
+2025-03-29 21:11:18 [INFO] API: DELETE /gateway/sucursales/4 - 204 No Content - 2.235s
+2025-03-29 21:31:10 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 21:31:10 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 21:31:10 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 21:31:10 [INFO] API: POST /login - 200 OK - 0.153s
+2025-03-29 21:31:45 [WARNING] API: GET /gateway/proveedores - FALLO (400 Bad Request) - 0.008s
+2025-03-29 21:31:58 [WARNING] API:  Error HTTP 404 Not Found (HTTPRouteNotFound): 404 Not Found - None
+2025-03-29 21:31:58 [WARNING] API: GET /gateway/proveedores
+ - FALLO (404 Not Found) - 0.001s
+2025-03-29 21:32:18 [WARNING] API:  Error HTTP 404 Not Found (HTTPRouteNotFound): 404 Not Found - None
+2025-03-29 21:32:18 [WARNING] API: GET /gateway/sucursales
+ - FALLO (404 Not Found) - 0.000s
+2025-03-29 21:33:42 [WARNING] API:  Error HTTP 404 Not Found (HTTPRouteNotFound): 404 Not Found - None
+2025-03-29 21:33:42 [WARNING] API: GET /gateway/almacen
+ - FALLO (404 Not Found) - 0.000s
+2025-03-29 21:36:27 [WARNING] API:  Error HTTP 404 Not Found (HTTPRouteNotFound): 404 Not Found - None
+2025-03-29 21:36:27 [WARNING] API: GET /gateway/proveedores
+ - FALLO (404 Not Found) - 0.001s
+2025-03-29 21:37:58 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 21:37:58 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 21:37:58 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 21:37:58 [INFO] API: POST /login - 200 OK - 0.149s
+2025-03-29 21:38:11 [WARNING] API:  Error HTTP 404 Not Found (HTTPRouteNotFound): 404 Not Found - None
+2025-03-29 21:38:11 [WARNING] API: GET /gateway/proveedores
+ - FALLO (404 Not Found) - 0.001s
+2025-03-29 21:41:12 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 21:41:12 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 21:41:12 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 21:41:12 [INFO] API: POST /login - 200 OK - 0.147s
+2025-03-29 21:41:23 [WARNING] API:  Error HTTP 404 Not Found (HTTPRouteNotFound): 404 Not Found - None
+2025-03-29 21:41:23 [WARNING] API: GET /gateway/proveedores
+ - FALLO (404 Not Found) - 0.001s
+2025-03-29 21:41:29 [WARNING] API:  Error HTTP 404 Not Found (HTTPRouteNotFound): 404 Not Found - None
+2025-03-29 21:41:29 [WARNING] API: POST /gateway/proveedores
+ - FALLO (404 Not Found) - 0.003s
+2025-03-29 21:42:37 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 21:42:37 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 21:42:37 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 21:42:37 [INFO] API: POST /login - 200 OK - 0.152s
+2025-03-29 21:42:52 [WARNING] API:  Error HTTP 404 Not Found (HTTPRouteNotFound): 404 Not Found - None
+2025-03-29 21:42:52 [WARNING] API: POST /gateway/proveedores
+ - FALLO (404 Not Found) - 0.000s
+2025-03-29 21:43:23 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 21:43:23 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 21:43:23 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 21:43:23 [INFO] API: POST /login - 200 OK - 0.150s
+2025-03-29 21:43:34 [WARNING] API:  Error HTTP 404 Not Found (HTTPRouteNotFound): 404 Not Found - None
+2025-03-29 21:43:34 [WARNING] API: POST /gateway/proveedores
+ - FALLO (404 Not Found) - 0.001s
+2025-03-29 21:43:38 [WARNING] API:  Error HTTP 404 Not Found (HTTPRouteNotFound): 404 Not Found - None
+2025-03-29 21:43:38 [WARNING] API: GET /gateway/proveedores
+ - FALLO (404 Not Found) - 0.001s
+2025-03-29 21:44:07 [INFO] API: GET /gateway/proveedores - 200 OK - 1.769s
+2025-03-29 21:44:23 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 21:44:23 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 21:44:23 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 21:44:23 [INFO] API: POST /login - 200 OK - 0.152s
+2025-03-29 21:44:39 [INFO] API: GET /gateway/proveedores - 200 OK - 0.453s
+2025-03-29 21:44:50 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Invalid JSON - Cuerpo mal formado.
+2025-03-29 21:44:50 [WARNING] API: POST /gateway/proveedores - FALLO (400 Bad Request) - 0.002s
+2025-03-29 21:45:13 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Invalid JSON - Cuerpo mal formado.
+2025-03-29 21:45:13 [WARNING] API: POST /gateway/proveedores - FALLO (400 Bad Request) - 0.002s
+2025-03-29 21:49:58 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 21:49:58 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 21:49:58 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 21:49:58 [INFO] API: POST /login - 200 OK - 0.147s
+2025-03-29 21:50:09 [INFO] API: GET /gateway/proveedores - 200 OK - 0.498s
+2025-03-29 21:50:14 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Invalid JSON - Cuerpo mal formado.
+2025-03-29 21:50:14 [WARNING] API: POST /gateway/proveedores - FALLO (400 Bad Request) - 0.002s
+2025-03-29 21:51:51 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 21:51:51 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 21:51:51 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 21:51:51 [INFO] API: POST /login - 200 OK - 0.193s
+2025-03-29 21:52:06 [INFO] API: GET /gateway/proveedores - 200 OK - 0.438s
+2025-03-29 21:52:09 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Invalid JSON - Cuerpo mal formado.
+2025-03-29 21:52:09 [WARNING] API: POST /gateway/proveedores - FALLO (400 Bad Request) - 0.002s
+2025-03-29 21:56:11 [WARNING] API:  Error HTTP 400 Bad Request (MediaNotFoundError): Invalid JSON - Could not parse an empty JSON body
+2025-03-29 21:56:11 [WARNING] API: POST /login - FALLO (400 Bad Request) - 0.005s
+2025-03-29 21:58:27 [WARNING] API:  Error HTTP 400 Bad Request (MediaNotFoundError): Invalid JSON - Could not parse an empty JSON body
+2025-03-29 21:58:27 [WARNING] API: POST /login - FALLO (400 Bad Request) - 0.004s
+2025-03-29 21:59:23 [ERROR] API: Excepción no manejada: property 'bounded_stream' of 'Request' object has no setter
+2025-03-29 21:59:23 [WARNING] API: POST /login - FALLO (500 Internal Server Error) - 0.001s
+2025-03-29 21:59:51 [ERROR] API: Excepción no manejada: property 'bounded_stream' of 'Request' object has no setter
+2025-03-29 21:59:51 [WARNING] API: POST /login - FALLO (500 Internal Server Error) - 0.001s
+2025-03-29 22:00:40 [WARNING] API:  Error HTTP 400 Bad Request (MediaNotFoundError): Invalid JSON - Could not parse an empty JSON body
+2025-03-29 22:00:40 [WARNING] API: POST /login - FALLO (400 Bad Request) - 0.003s
+2025-03-29 22:01:43 [ERROR] API: Excepción no manejada: 'RASPMiddleware' object has no attribute '_analizar_objeto'
+2025-03-29 22:01:43 [WARNING] API: POST /login - FALLO (500 Internal Server Error) - 0.001s
+2025-03-29 22:07:53 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-29 22:07:53 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-29 22:07:53 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-29 22:07:53 [INFO] API: POST /login - 200 OK - 0.241s
+2025-03-29 22:08:08 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Datos inválidos - {'token': ['Missing data for required field.'], 'estatus': ['Unknown field.'], 'fechaBaja': ['Unknown field.'], 'proveedorId': ['Unknown field.'], 'fechaAlta': ['Unknown field.']}
+2025-03-29 22:08:08 [WARNING] API: POST /gateway/proveedores - FALLO (400 Bad Request) - 0.003s
+2025-03-29 22:08:31 [INFO] API: GET /gateway/proveedores - 200 OK - 1.717s
+2025-03-29 22:08:34 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Datos inválidos - {'token': ['Missing data for required field.'], 'estatus': ['Unknown field.'], 'fechaBaja': ['Unknown field.'], 'proveedorId': ['Unknown field.'], 'fechaAlta': ['Unknown field.']}
+2025-03-29 22:08:34 [WARNING] API: POST /gateway/proveedores - FALLO (400 Bad Request) - 0.004s

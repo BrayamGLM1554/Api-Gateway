@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.6.3.5 Auth Fix" />
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.6.3.6 Auth Fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/resources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/error_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/error_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/metrics_middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/metrics_middleware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway_api/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/gateway_api/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway_api/gateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/gateway_api/gateway.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/api.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/api.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/soap_api/generar_token.py" beforeDir="false" afterPath="$PROJECT_DIR$/soap_api/generar_token.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/soap_api/proveedores.py" beforeDir="false" afterPath="$PROJECT_DIR$/soap_api/proveedores.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,14 +77,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740096760093</updated>
-    </task>
-    <task id="LOCAL-00017" summary="v 0.783 Vercel Update">
-      <option name="closed" value="true" />
-      <created>1740360357323</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1740360357323</updated>
     </task>
     <task id="LOCAL-00018" summary="v 0.79 RailWay Update">
       <option name="closed" value="true" />
@@ -458,11 +462,18 @@
       <option name="project" value="LOCAL" />
       <updated>1743125805136</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="v 0.9.6.3.6 Auth Fix">
+      <option name="closed" value="true" />
+      <created>1743126172875</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1743126172875</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.9 Marshmellow, and fix on Auth.py" />
     <MESSAGE value="v 0.9 Fix SonarQube Warnings" />
     <MESSAGE value="v 0.9 new DAST fix" />
     <MESSAGE value="v 0.9 new fix SonarQube Warning" />
@@ -487,6 +498,17 @@
     <MESSAGE value="v 0.9.6.3.3 POST fixed problem" />
     <MESSAGE value="v 0.9.6.3.4 POST fixed problem" />
     <MESSAGE value="v 0.9.6.3.5 Auth Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.6.3.5 Auth Fix" />
+    <MESSAGE value="v 0.9.6.3.6 Auth Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.6.3.6 Auth Fix" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/api/resources.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

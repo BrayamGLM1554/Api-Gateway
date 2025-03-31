@@ -30,9 +30,9 @@ class MetricsMiddleware:
         if not req_succeeded or resp.status_code >= 400:
             self.total_errors += 1
             self.by_route[route]["errors"] += 1
-            logger.warning(f"📉 {req.method} {req.path} - FALLO ({resp.status}) - {duration:.3f}s")
+            logger.warning(f"{req.method} {req.path} - FALLO ({resp.status}) - {duration:.3f}s")
         else:
-            logger.info(f"📈 {req.method} {req.path} - {resp.status} - {duration:.3f}s")
+            logger.info(f"{req.method} {req.path} - {resp.status} - {duration:.3f}s")
 
     def get_metrics(self):
         return {

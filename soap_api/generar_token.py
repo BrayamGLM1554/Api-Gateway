@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 import falcon
 from dotenv import load_dotenv
 from marshmallow import ValidationError
-from schemas.tokens_schema import TokenProviderSchema  # ✅ Importar esquema
+from schemas.tokens_schema import TokenProviderSchema
 
 load_dotenv()
 
@@ -28,7 +28,7 @@ class GenerarTokenResource:
     def on_post(self, req, resp):
         """Genera un nuevo token para un proveedor si la sesión está activa."""
 
-        # 🔒 Verificar cabecera de autenticación
+        # Verificar cabecera de autenticación
         token = req.get_header('Authorization')
         if not token:
             raise falcon.HTTPUnauthorized(description="Se requiere un token.")
@@ -37,7 +37,7 @@ class GenerarTokenResource:
         if token not in self.active_tokens['by_token']:
             raise falcon.HTTPUnauthorized(description="Token inválido o sesión expirada.")
 
-        # 🔍 (Opcional) Validar datos del body si en el futuro vienen datos
+        # (Opcional) Validar datos del body si en el futuro vienen datos
         try:
             if req.content_length:
                 raw_data = req.media
@@ -45,7 +45,7 @@ class GenerarTokenResource:
         except ValidationError as err:
             raise falcon.HTTPBadRequest('Datos inválidos', str(err.messages))
 
-        # 🪙 Generar token para proveedor
+        # Generar token para proveedor
         nuevo_token = secrets.token_urlsafe(32)
         expiracion = datetime.now() + timedelta(hours=24)
 

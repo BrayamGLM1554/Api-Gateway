@@ -1,8 +1,8 @@
 import os
 import falcon
 import pymysql
-from falcon_cors import CORS
 from dotenv import load_dotenv
+from falcon_cors import CORS
 from common.auth_tokens import active_tokens
 from api.resources import LoginResource
 from maps_api.maps import MapsResource
@@ -13,12 +13,13 @@ from soap_api.proveedores import ProveedorResource
 from soap_api.generar_token import GenerarTokenResource
 from common.error_handler import handle_exception, handle_http_error
 from common.metrics_middleware import MetricsMiddleware
-from metrics.metrics_resource import MetricsResource  # ✅ Nuevo recurso
+from metrics.metrics_resource import MetricsResource
 
-# 🔐 Cargar variables de entorno
+# Cargar variables de entorno
 load_dotenv()
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "*")
 
-# 🛠️ Configuración del pool de conexiones
+# 🛠Configuración del pool de conexiones
 class Database:
     def __init__(self):
         self.pool = None
@@ -36,33 +37,44 @@ class Database:
                 autocommit=True
             )
         except pymysql.Error as e:
-            raise RuntimeError(f"❌ Error al conectar a la base de datos: {e}")
+            raise RuntimeError(f"Error al conectar a la base de datos: {e}")
 
     def get_connection(self):
         return self.pool
 
 db = Database()
 
-# 🌍 CORS
-cors_open = CORS(allow_all_origins=True, allow_all_headers=True, allow_all_methods=True)
+# CORS
+cors_restringido = CORS(
+    allow_origins_list=[allowed_origins],
+    allow_all_headers=True,
+    allow_all_methods=True
+)
 
-# 📊 Middleware de métricas instanciado antes
+cors_abierto = CORS(
+    allow_all_origins=True,
+    allow_all_headers=True,
+    allow_all_methods=True
+)
+
+# Middleware de métricas
 metrics_middleware = MetricsMiddleware()
 
-# 🚀 Crear app Falcon
+# Crear app Falcon
 app = falcon.App(
     middleware=[
-        cors_open.middleware,
+        cors_restringido.middleware,
         AuthMiddleware(active_tokens),
         metrics_middleware
     ]
 )
 
-# 📛 Manejadores de errores globales
+
+# Manejadores de errores globales
 app.add_error_handler(Exception, handle_exception)
 app.add_error_handler(falcon.HTTPError, handle_http_error)
 
-# 🌐 Instancias de recursos
+# Instancias de recursos
 login_resource = LoginResource(db.get_connection(), active_tokens)
 map_loader_resource = MapLoaderResource()
 maps_resource = MapsResource(active_tokens, map_loader_resource)
@@ -73,9 +85,9 @@ gateway_activofijo = GatewayResource("activofijo")
 gateway_reconocimiento = GatewayResource("reconocimiento")
 proveedor_resource = ProveedorResource()
 generar_token_resource = GenerarTokenResource(active_tokens)
-metrics_resource = MetricsResource(metrics_middleware)  # ✅ Recurso con las métricas
+metrics_resource = MetricsResource(metrics_middleware)
 
-# 📌 Rutas
+#  Rutas con CORS restringido
 app.add_route('/login', login_resource)
 app.add_route('/maps_api/maps', maps_resource)
 app.add_route('/maps_api/load_map', map_loader_resource)
@@ -88,11 +100,14 @@ app.add_route("/gateway/almacen/{id}", gateway_almacen)
 app.add_route("/gateway/activofijo", gateway_activofijo)
 app.add_route("/gateway/activofijo/{id}", gateway_activofijo)
 app.add_route("/gateway/reconocimiento", gateway_reconocimiento)
-app.add_route('/api/soap/proveedores', proveedor_resource)
 app.add_route('/api/generar_token', generar_token_resource)
-app.add_route('/metrics', metrics_resource)  # ✅ NUEVO endpoint para métricas
+app.add_route('/metrics', metrics_resource)
 
-# 🔥 Servidor local
+#  Ruta con CORS abierto
+app.add_route('/api/soap/proveedores', proveedor_resource, cors=cors_abierto)
+
+#  Servidor local
 if __name__ == '__main__':
     from waitress import serve
+    print("servidor corriendo en ")
     serve(app, host='0.0.0.0', port=8000)

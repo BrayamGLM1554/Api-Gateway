@@ -1,9 +1,33 @@
 import falcon
 import requests
 import json
+import re
 from .config import MICROSERVICIOS
-from schemas.proveedor_schema import ProveedorSchema
-from marshmallow import ValidationError
+
+# Funciones de validación RASP
+
+def contiene_inyeccion(valor):
+    if not isinstance(valor, str):
+        return False
+    patrones = [
+        r"<script.*?>.*?</script>", r"<.*?on\w+=.*?>",  # XSS
+        r"(?i)UNION\s+SELECT", r"(?i)DROP\s+TABLE", r"(?i)INSERT\s+INTO",  # SQLi
+        r"' OR '1'='1", r"--", r";"
+    ]
+    return any(re.search(p, valor) for p in patrones)
+
+def analizar_recursivamente(data):
+    if isinstance(data, dict):
+        for val in data.values():
+            if analizar_recursivamente(val):
+                return True
+    elif isinstance(data, list):
+        for item in data:
+            if analizar_recursivamente(item):
+                return True
+    elif isinstance(data, str):
+        return contiene_inyeccion(data)
+    return False
 
 class GatewayResource:
     def __init__(self, service_name):
@@ -20,18 +44,17 @@ class GatewayResource:
             "Content-Type": "application/json"
         }
 
-        # Leer y preparar el cuerpo solo para POST o PUT
         body = None
         if method in ("POST", "PUT"):
             try:
                 raw_json = req.bounded_stream.read()
-                print("JSON crudo recibido:", raw_json)  # DEBUG: ver si llega algo
+                print("JSON crudo recibido:", raw_json)
                 decoded = raw_json.decode("utf-8") if raw_json else None
                 print("JSON decodificado:", decoded)
 
                 data = json.loads(decoded) if decoded else None
                 if data:
-                    body = data
+                    body = data  # 🔥 se manda tal cual, sin encapsular
                     print("JSON enviado al microservicio:", json.dumps(body, indent=2))
                 else:
                     raise falcon.HTTPBadRequest(title="Cuerpo vacío", description="El cuerpo no puede estar vacío.")
@@ -86,4 +109,3 @@ class GatewayResource:
         resp_obj = self.forward_request(req, "DELETE", append_path)
         resp.status = resp_obj.status
         resp.media = resp_obj.media
-

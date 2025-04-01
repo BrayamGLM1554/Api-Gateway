@@ -199,3 +199,22 @@
 2025-03-29 22:08:31 [INFO] API: GET /gateway/proveedores - 200 OK - 1.717s
 2025-03-29 22:08:34 [WARNING] API:  Error HTTP 400 Bad Request (HTTPBadRequest): Datos inválidos - {'token': ['Missing data for required field.'], 'estatus': ['Unknown field.'], 'fechaBaja': ['Unknown field.'], 'proveedorId': ['Unknown field.'], 'fechaAlta': ['Unknown field.']}
 2025-03-29 22:08:34 [WARNING] API: POST /gateway/proveedores - FALLO (400 Bad Request) - 0.004s
+2025-03-31 19:00:03 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-31 19:00:03 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-31 19:00:03 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-31 19:00:03 [INFO] API: POST /login - 200 OK - 0.176s
+2025-03-31 19:00:21 [INFO] API: POST /gateway/proveedores - 201 Created - 2.188s
+2025-03-31 19:00:46 [INFO] API: GET /gateway/activofijo - 200 OK - 1.854s
+2025-03-31 19:01:17 [WARNING] API: POST /gateway/activofijo - FALLO (400 Bad Request) - 0.227s
+2025-03-31 19:04:53 [INFO] API: Intento de login: juan.perez@example.com
+2025-03-31 19:04:53 [INFO] API: Token generado y activado para: juan.perez@example.com
+2025-03-31 19:04:53 [INFO] API: Login exitoso: juan.perez@example.com (rol: Usuario)
+2025-03-31 19:04:53 [INFO] API: POST /login - 200 OK - 0.163s
+2025-03-31 19:05:16 [WARNING] API: POST /gateway/activofijo - FALLO (400 Bad Request) - 0.212s
+2025-03-31 19:07:25 [INFO] API: POST /gateway/proveedores - 201 Created - 2.088s
+2025-03-31 19:07:49 [WARNING] API: POST /gateway/activofijo - FALLO (400 Bad Request) - 0.302s
+2025-03-31 19:08:15 [WARNING] API: POST /gateway/activofijo - FALLO (400 Bad Request) - 0.246s
+2025-03-31 19:08:34 [INFO] API: GET /gateway/activofijo - 200 OK - 1.702s
+2025-03-31 19:09:05 [WARNING] API: POST /gateway/activofijo - FALLO (400 Bad Request) - 0.251s
+2025-03-31 19:09:16 [WARNING] API: POST /gateway/activofijo - FALLO (400 Bad Request) - 0.225s
+2025-03-31 19:10:58 [INFO] API: POST /gateway/activofijo - 201 Created - 1.168s

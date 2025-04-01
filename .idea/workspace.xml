@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.6.3.7 Nuevas validaciones" />
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.7 CORS abierto">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway_api/gateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/gateway_api/gateway.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,14 +47,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/braya/OneDrive/Documentos/GitHub/Api-Gateway"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/braya/OneDrive/Documentos/GitHub/Api-Gateway&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -66,14 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740096760093</updated>
-    </task>
-    <task id="LOCAL-00019" summary="v 0.79 RailWay Update">
-      <option name="closed" value="true" />
-      <created>1740361791711</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1740361791711</updated>
     </task>
     <task id="LOCAL-00020" summary="v 0.81 API Gateway (errores), API SOAP, y API MAPAS">
       <option name="closed" value="true" />
@@ -459,11 +455,18 @@
       <option name="project" value="LOCAL" />
       <updated>1743393705062</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="v 0.9.7 CORS abierto">
+      <option name="closed" value="true" />
+      <created>1743394188155</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1743394188155</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.9 new DAST fix" />
     <MESSAGE value="v 0.9 new fix SonarQube Warning" />
     <MESSAGE value="v 0.9.1 Fix problems with logs" />
     <MESSAGE value="v 0.9.1 Get by ID" />
@@ -488,7 +491,8 @@
     <MESSAGE value="v 0.9.6.3.5 Auth Fix" />
     <MESSAGE value="v 0.9.6.3.6 Auth Fix" />
     <MESSAGE value="v 0.9.6.3.7 Nuevas validaciones" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.6.3.7 Nuevas validaciones" />
+    <MESSAGE value="v 0.9.7 CORS abierto" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.7 CORS abierto" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

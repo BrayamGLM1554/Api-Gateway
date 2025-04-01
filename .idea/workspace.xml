@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.7 CORS abierto">
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.8 CORS closed, and not encaptulation on body request">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway_api/gateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/gateway_api/gateway.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/api.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/api.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,14 +46,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/braya/OneDrive/Documentos/GitHub/Api-Gateway&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/braya/OneDrive/Documentos/GitHub/InterpolacionLineal"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -70,14 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740096760093</updated>
-    </task>
-    <task id="LOCAL-00020" summary="v 0.81 API Gateway (errores), API SOAP, y API MAPAS">
-      <option name="closed" value="true" />
-      <created>1741293552321</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1741293552321</updated>
     </task>
     <task id="LOCAL-00021" summary="v 0.82 CORS Globales y Especificos">
       <option name="closed" value="true" />
@@ -463,11 +454,18 @@
       <option name="project" value="LOCAL" />
       <updated>1743394188155</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="v 0.9.8 CORS closed, and not encaptulation on body request">
+      <option name="closed" value="true" />
+      <created>1743469903740</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1743469903740</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.9 new fix SonarQube Warning" />
     <MESSAGE value="v 0.9.1 Fix problems with logs" />
     <MESSAGE value="v 0.9.1 Get by ID" />
     <MESSAGE value="v 0.9.1 any count of sessions" />
@@ -492,7 +490,8 @@
     <MESSAGE value="v 0.9.6.3.6 Auth Fix" />
     <MESSAGE value="v 0.9.6.3.7 Nuevas validaciones" />
     <MESSAGE value="v 0.9.7 CORS abierto" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.7 CORS abierto" />
+    <MESSAGE value="v 0.9.8 CORS closed, and not encaptulation on body request" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.8 CORS closed, and not encaptulation on body request" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

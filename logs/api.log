@@ -218,3 +218,9 @@
 2025-03-31 19:09:05 [WARNING] API: POST /gateway/activofijo - FALLO (400 Bad Request) - 0.251s
 2025-03-31 19:09:16 [WARNING] API: POST /gateway/activofijo - FALLO (400 Bad Request) - 0.225s
 2025-03-31 19:10:58 [INFO] API: POST /gateway/activofijo - 201 Created - 1.168s
+2025-03-31 19:12:05 [INFO] API: POST /gateway/proveedores - 201 Created - 1.949s
+2025-03-31 19:12:19 [INFO] API: GET /gateway/sucursales - 200 OK - 2.208s
+2025-03-31 19:12:48 [INFO] API: POST /gateway/sucursales - 201 Created - 0.938s
+2025-03-31 19:13:11 [INFO] API: DELETE /gateway/sucursales/7 - 204 No Content - 0.924s
+2025-03-31 19:13:17 [WARNING] API: GET /gateway/sucursales/7 - FALLO (404 Not Found) - 0.535s
+2025-03-31 19:13:19 [INFO] API: GET /gateway/sucursales - 200 OK - 0.528s

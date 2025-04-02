@@ -1,33 +1,7 @@
 import falcon
 import requests
 import json
-import re
 from .config import MICROSERVICIOS
-
-# Funciones de validación RASP
-
-def contiene_inyeccion(valor):
-    if not isinstance(valor, str):
-        return False
-    patrones = [
-        r"<script.*?>.*?</script>", r"<.*?on\w+=.*?>",  # XSS
-        r"(?i)UNION\s+SELECT", r"(?i)DROP\s+TABLE", r"(?i)INSERT\s+INTO",  # SQLi
-        r"' OR '1'='1", r"--", r";"
-    ]
-    return any(re.search(p, valor) for p in patrones)
-
-def analizar_recursivamente(data):
-    if isinstance(data, dict):
-        for val in data.values():
-            if analizar_recursivamente(val):
-                return True
-    elif isinstance(data, list):
-        for item in data:
-            if analizar_recursivamente(item):
-                return True
-    elif isinstance(data, str):
-        return contiene_inyeccion(data)
-    return False
 
 class GatewayResource:
     def __init__(self, service_name):
@@ -52,12 +26,8 @@ class GatewayResource:
                 decoded = raw_json.decode("utf-8") if raw_json else None
                 print("JSON decodificado:", decoded)
 
-                data = json.loads(decoded) if decoded else None
-                if data:
-                    body = data  # 🔥 se manda tal cual, sin encapsular
-                    print("JSON enviado al microservicio:", json.dumps(body, indent=2))
-                else:
-                    raise falcon.HTTPBadRequest(title="Cuerpo vacío", description="El cuerpo no puede estar vacío.")
+                body = json.loads(decoded) if decoded else None
+                print("JSON enviado al microservicio:", json.dumps(body, indent=2))
             except Exception as e:
                 print("Error al procesar JSON:", str(e))
                 raise falcon.HTTPBadRequest(title="Invalid JSON", description="Cuerpo mal formado.")

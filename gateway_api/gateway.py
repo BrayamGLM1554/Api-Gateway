@@ -2,9 +2,16 @@ import falcon
 import requests
 import json
 import re
+from marshmallow import ValidationError
 from .config import MICROSERVICIOS
+from schemas.schemas import (
+    verificar_rasp,
+    ProveedorSchema,
+    ActivoFijoSchema,
+    SucursalSchema
+)
 
-# --- AppSensor detección básica ---
+# --- AppSensor detección básica (IAST pasivo) ---
 def contiene_inyeccion(valor):
     if not isinstance(valor, str):
         return False
@@ -27,6 +34,7 @@ def analizar_payload(payload, usuario):
                 eventos += analizar_payload(v, usuario)
             elif isinstance(v, str) and contiene_inyeccion(v):
                 eventos.append((k, v))
+                registrar_evento_ia("IAST-Injection", f"Campo '{k}' contiene patrón sospechoso", usuario)
     return eventos
 
 class GatewayResource:
@@ -52,22 +60,25 @@ class GatewayResource:
                 print("JSON decodificado:", decoded)
 
                 body = json.loads(decoded) if decoded else None
-
                 usuario = req.context.get("user", {}).get("correo", "desconocido")
+
                 if body:
-                    eventos_detectados = analizar_payload(body, usuario)
-                    if eventos_detectados:
-                        for campo, valor in eventos_detectados:
-                            registrar_evento_ia("IAST-Injection", f"Campo '{campo}' contiene patrón sospechoso", usuario)
-                        raise falcon.HTTPForbidden(
-                            title="Solicitud rechazada",
-                            description="Se detectaron posibles patrones de ataque en los datos enviados."
-                        )
-            except falcon.HTTPForbidden:
-                raise
+                    eventos_detectados = analizar_payload(body, usuario)  # IAST
+                    verificar_rasp(eventos_detectados)  # RASP
+
+                    # Validación estructural con el esquema adecuado
+                    if self.service_name == "proveedores":
+                        ProveedorSchema().load(body)
+                    elif self.service_name == "activofijo":
+                        ActivoFijoSchema().load(body)
+                    elif self.service_name == "sucursales":
+                        SucursalSchema().load(body)
+
+            except ValidationError as ve:
+                raise falcon.HTTPBadRequest(title="Datos inválidos", description=str(ve))
             except Exception as e:
-                print("Error al procesar JSON:", str(e))
-                raise falcon.HTTPBadRequest(title="Invalid JSON", description="Cuerpo mal formado.")
+                print("Error al procesar JSON o seguridad:", str(e))
+                raise falcon.HTTPBadRequest(title="Cuerpo mal formado", description=str(e))
 
         print("Reenviando solicitud al microservicio:")
         print("Servicio:", self.service_name)

@@ -4,7 +4,7 @@ from datetime import datetime
 import falcon
 from dotenv import load_dotenv
 from marshmallow import ValidationError
-from schemas.proveedor_schema import ProveedorSchema
+from schemas.schemas import ProveedorSchema
 
 load_dotenv()
 

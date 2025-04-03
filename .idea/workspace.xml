@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.8.2.2 gateway IAST Validation new version">
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.8.2.4 gateway IAST Validation new version">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway_api/gateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/gateway_api/gateway.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/proveedor_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/schemas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/soap_api/proveedores.py" beforeDir="false" afterPath="$PROJECT_DIR$/soap_api/proveedores.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,22 +72,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740096760093</updated>
-    </task>
-    <task id="LOCAL-00025" summary="v 0.84.3 CORS Globales y Especificos">
-      <option name="closed" value="true" />
-      <created>1741306168559</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1741306168559</updated>
-    </task>
-    <task id="LOCAL-00026" summary="v 0.85 New Validation on Soap API">
-      <option name="closed" value="true" />
-      <created>1742513587659</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1742513587659</updated>
     </task>
     <task id="LOCAL-00027" summary="v 0.8 Cors New Update">
       <option name="closed" value="true" />
@@ -461,12 +449,26 @@
       <option name="project" value="LOCAL" />
       <updated>1743698748112</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="v 0.9.8.2.3 gateway IAST Validation new version">
+      <option name="closed" value="true" />
+      <created>1743698968160</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1743698968160</updated>
+    </task>
+    <task id="LOCAL-00075" summary="v 0.9.8.2.4 gateway IAST Validation new version">
+      <option name="closed" value="true" />
+      <created>1743699122119</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1743699122119</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.9.3 Clean logs in console" />
-    <MESSAGE value="v 0.9.3 just logs On Railway" />
     <MESSAGE value="v 0.9.4 new Endpoint" />
     <MESSAGE value="v 0.9.4 new Endpoint, fix auth problem" />
     <MESSAGE value="v 0.9.4 new time expiration on token" />
@@ -490,7 +492,9 @@
     <MESSAGE value="v 0.9.8.2 gateway pasivo sin rasp" />
     <MESSAGE value="v 0.9.8.2 gateway IAST Validation" />
     <MESSAGE value="v 0.9.8.2.2 gateway IAST Validation new version" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.8.2.2 gateway IAST Validation new version" />
+    <MESSAGE value="v 0.9.8.2.3 gateway IAST Validation new version" />
+    <MESSAGE value="v 0.9.8.2.4 gateway IAST Validation new version" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.8.2.4 gateway IAST Validation new version" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

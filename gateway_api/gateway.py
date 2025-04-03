@@ -52,40 +52,8 @@ class GatewayResource:
             "Content-Type": "application/json"
         }
 
-        body = None
-        if method in ("POST", "PUT"):
-            try:
-                raw_json = req.bounded_stream.read()
-                decoded = raw_json.decode("utf-8") if raw_json else None
-                print("JSON decodificado:", decoded)
-
-                body = json.loads(decoded) if decoded else None
-                usuario = req.context.get("user", {}).get("correo", "desconocido")
-
-                if body:
-                    eventos_detectados = analizar_payload(body, usuario)  # IAST
-                    verificar_rasp(eventos_detectados)  # RASP
-
-                    # Validación estructural con el esquema adecuado
-                    if self.service_name == "proveedores":
-                        ProveedorSchema().load(body)
-                    elif self.service_name == "activofijo":
-                        ActivoFijoSchema().load(body)
-                    elif self.service_name == "sucursales":
-                        SucursalSchema().load(body)
-
-            except ValidationError as ve:
-                raise falcon.HTTPBadRequest(title="Datos inválidos", description=str(ve))
-            except Exception as e:
-                print("Error al procesar JSON o seguridad:", str(e))
-                raise falcon.HTTPBadRequest(title="Cuerpo mal formado", description=str(e))
-
-        print("Reenviando solicitud al microservicio:")
-        print("Servicio:", self.service_name)
-        print("URL:", url)
-        print("Método:", method)
-        print("Headers:", headers)
-        print("Body:", body)
+        body = self._procesar_body_si_necesario(req, method)
+        self._mostrar_info_envio(method, url, headers, body)
 
         try:
             response = requests.request(method, url, headers=headers, json=body)
@@ -104,6 +72,47 @@ class GatewayResource:
             resp.text = response.text
 
         return resp
+
+    def _procesar_body_si_necesario(self, req, method):
+        if method not in ("POST", "PUT"):
+            return None
+
+        try:
+            raw_json = req.bounded_stream.read()
+            decoded = raw_json.decode("utf-8") if raw_json else None
+            print("JSON decodificado:", decoded)
+
+            body = json.loads(decoded) if decoded else None
+            usuario = req.context.get("user", {}).get("correo", "desconocido")
+
+            if body:
+                eventos_detectados = analizar_payload(body, usuario)
+                verificar_rasp(eventos_detectados)
+                self._validar_con_schema(body)
+
+            return body
+
+        except ValidationError as ve:
+            raise falcon.HTTPBadRequest(title="Datos inválidos", description=str(ve))
+        except Exception as e:
+            print("Error al procesar JSON o seguridad:", str(e))
+            raise falcon.HTTPBadRequest(title="Cuerpo mal formado", description=str(e))
+
+    def _validar_con_schema(self, body):
+        if self.service_name == "proveedores":
+            ProveedorSchema().load(body)
+        elif self.service_name == "activofijo":
+            ActivoFijoSchema().load(body)
+        elif self.service_name == "sucursales":
+            SucursalSchema().load(body)
+
+    def _mostrar_info_envio(self, method, url, headers, body):
+        print("Reenviando solicitud al microservicio:")
+        print("Servicio:", self.service_name)
+        print("URL:", url)
+        print("Método:", method)
+        print("Headers:", headers)
+        print("Body:", body)
 
     def on_get(self, req, resp, id=None):
         append_path = f"/{id}" if id else ""

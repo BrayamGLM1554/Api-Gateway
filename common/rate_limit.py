@@ -8,7 +8,7 @@ class RateLimitMiddleware:
         self.window = window  # Ventana de tiempo en segundos
         self.clients = defaultdict(list)
 
-    def process_request(self, req, resp):
+    def process_request(self, req, _resp):
         client_ip = req.access_route[0]  # IP cliente
         now = time.time()
 

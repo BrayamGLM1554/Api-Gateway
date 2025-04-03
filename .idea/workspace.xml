@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.9,9 Latest Stable Version" />
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 1.0 final version">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/rate_limit.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/rate_limit.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,14 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740096760093</updated>
-    </task>
-    <task id="LOCAL-00030" summary="v 0.86.4 New changes on CORs">
-      <option name="closed" value="true" />
-      <created>1742516829714</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1742516829714</updated>
     </task>
     <task id="LOCAL-00031" summary="v 0.86.5 New changes on CORS, print origins">
       <option name="closed" value="true" />
@@ -459,11 +455,18 @@
       <option name="project" value="LOCAL" />
       <updated>1743715905057</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="v 1.0 final version">
+      <option name="closed" value="true" />
+      <created>1743716218808</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1743716218808</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.9.4 new time expiration on token" />
     <MESSAGE value="v 0.9.4 SonarQube Fixes" />
     <MESSAGE value="v 0.9.4 New head" />
     <MESSAGE value="v 0.9.4 print request" />
@@ -488,7 +491,8 @@
     <MESSAGE value="v 0.9.8.2.4 gateway IAST Validation new version" />
     <MESSAGE value="v 0.9.9 Latest Stable Version" />
     <MESSAGE value="v 0.9.9,9 Latest Stable Version" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.9,9 Latest Stable Version" />
+    <MESSAGE value="v 1.0 final version" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 1.0 final version" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

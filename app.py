@@ -18,7 +18,6 @@ from common.rate_limit import RateLimitMiddleware
 
 # Cargar variables de entorno
 load_dotenv()
-allowed_origins = os.getenv("ALLOWED_ORIGINS", "*")
 
 # 🛠Configuración del pool de conexiones
 class Database:
@@ -45,13 +44,7 @@ class Database:
 
 db = Database()
 
-# CORS
-cors_restringido = CORS(
-    allow_origins_list=[allowed_origins],
-    allow_all_headers=True,
-    allow_all_methods=True
-)
-
+# CORS completamente abierto
 cors_abierto = CORS(
     allow_all_origins=True,
     allow_all_headers=True,
@@ -64,9 +57,9 @@ metrics_middleware = MetricsMiddleware()
 # Middlewares globales
 app = falcon.App(
     middleware=[
-        cors_restringido.middleware,
-        AuthMiddleware(active_tokens),     # Seguridad: tokens JWT
-        metrics_middleware,                # Monitoreo: tiempo, errores, rutas
+        cors_abierto.middleware,                   # 🔓 CORS abierto globalmente
+        AuthMiddleware(active_tokens),             # Seguridad: tokens JWT
+        metrics_middleware,                        # Monitoreo: tiempo, errores, rutas
         RateLimitMiddleware(limit=20, window=60),  # Protección: Rate Limiting global por IP
     ]
 )
@@ -88,7 +81,7 @@ proveedor_resource = ProveedorResource()
 generar_token_resource = GenerarTokenResource(active_tokens)
 metrics_resource = MetricsResource(metrics_middleware)
 
-#  Rutas con CORS restringido
+# Rutas con CORS abierto
 app.add_route('/login', login_resource)
 app.add_route('/maps_api/maps', maps_resource)
 app.add_route('/maps_api/load_map', map_loader_resource)
@@ -103,11 +96,9 @@ app.add_route("/gateway/activofijo/{id}", gateway_activofijo)
 app.add_route("/gateway/reconocimiento", gateway_reconocimiento)
 app.add_route('/api/generar_token', generar_token_resource)
 app.add_route('/metrics', metrics_resource)
+app.add_route('/api/soap/proveedores', proveedor_resource)
 
-#  Ruta con CORS abierto
-app.add_route('/api/soap/proveedores', proveedor_resource, cors=cors_abierto)
-
-#  Servidor local
+# Servidor local
 if __name__ == '__main__':
     from waitress import serve
     print("servidor corriendo en ")

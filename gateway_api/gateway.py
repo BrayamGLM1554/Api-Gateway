@@ -48,12 +48,8 @@ class GatewayResource:
         if method in ("POST", "PUT"):
             try:
                 raw_json = req.bounded_stream.read()
-                print("JSON crudo recibido:", raw_json)
                 decoded = raw_json.decode("utf-8") if raw_json else None
                 print("JSON decodificado:", decoded)
-
-                body = json.loads(decoded) if decoded else None
-                print("JSON enviado al microservicio:", json.dumps(body, indent=2))
 
                 usuario = req.context.get("user", {}).get("correo", "desconocido")
                 if body:

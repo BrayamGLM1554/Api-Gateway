@@ -51,6 +51,8 @@ class GatewayResource:
                 decoded = raw_json.decode("utf-8") if raw_json else None
                 print("JSON decodificado:", decoded)
 
+                body = json.loads(decoded) if decoded else None
+
                 usuario = req.context.get("user", {}).get("correo", "desconocido")
                 if body:
                     eventos_detectados = analizar_payload(body, usuario)

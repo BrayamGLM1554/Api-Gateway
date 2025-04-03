@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.8 CORS abiertos">
+    <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 0.9.8.2 gateway pasivo sin rasp">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway_api/gateway.py" beforeDir="false" afterPath="$PROJECT_DIR$/gateway_api/gateway.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/api.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/api.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,14 +48,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/braya/OneDrive/Documentos/GitHub/Api-Gateway"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/braya/OneDrive/Documentos/GitHub/Api-Gateway&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -69,14 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740096760093</updated>
-    </task>
-    <task id="LOCAL-00022" summary="v 0.83 CORS Globales">
-      <option name="closed" value="true" />
-      <created>1741305393780</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1741305393780</updated>
     </task>
     <task id="LOCAL-00023" summary="v 0.84 CORS Globales y Especificos">
       <option name="closed" value="true" />
@@ -462,11 +456,18 @@
       <option name="project" value="LOCAL" />
       <updated>1743536130375</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="v 0.9.8.2 gateway pasivo sin rasp">
+      <option name="closed" value="true" />
+      <created>1743615507910</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1743615507910</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v 0.9.1 Get by ID" />
     <MESSAGE value="v 0.9.1 any count of sessions" />
     <MESSAGE value="v 0.9.2 finish version I guess" />
     <MESSAGE value="v 0.9.3 Clean logs in console" />
@@ -491,7 +492,8 @@
     <MESSAGE value="v 0.9.7 CORS abierto" />
     <MESSAGE value="v 0.9.8 CORS closed, and not encaptulation on body request" />
     <MESSAGE value="v 0.9.8 CORS abiertos" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.8 CORS abiertos" />
+    <MESSAGE value="v 0.9.8.2 gateway pasivo sin rasp" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.9.8.2 gateway pasivo sin rasp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -20,12 +20,14 @@ def registrar_evento_ia(tipo, descripcion, usuario):
     print(f"[AppSensor] ALERTA | Tipo: {tipo} | Usuario: {usuario} | Detalle: {descripcion}")
 
 def analizar_payload(payload, usuario):
+    eventos = []
     if isinstance(payload, dict):
         for k, v in payload.items():
             if isinstance(v, (dict, list)):
-                analizar_payload(v, usuario)
+                eventos += analizar_payload(v, usuario)
             elif isinstance(v, str) and contiene_inyeccion(v):
-                registrar_evento_ia("IAST-Injection", f"Campo '{k}' contiene patrón sospechoso", usuario)
+                eventos.append((k, v))
+    return eventos
 
 class GatewayResource:
     def __init__(self, service_name):
@@ -55,8 +57,16 @@ class GatewayResource:
 
                 usuario = req.context.get("user", {}).get("correo", "desconocido")
                 if body:
-                    analizar_payload(body, usuario)
-
+                    eventos_detectados = analizar_payload(body, usuario)
+                    if eventos_detectados:
+                        for campo, valor in eventos_detectados:
+                            registrar_evento_ia("IAST-Injection", f"Campo '{campo}' contiene patrón sospechoso", usuario)
+                        raise falcon.HTTPForbidden(
+                            title="Solicitud rechazada",
+                            description="Se detectaron posibles patrones de ataque en los datos enviados."
+                        )
+            except falcon.HTTPForbidden:
+                raise
             except Exception as e:
                 print("Error al procesar JSON:", str(e))
                 raise falcon.HTTPBadRequest(title="Invalid JSON", description="Cuerpo mal formado.")
@@ -70,23 +80,6 @@ class GatewayResource:
 
         try:
             response = requests.request(method, url, headers=headers, json=body)
-            response.raise_for_status()
-        except requests.exceptions.HTTPError as e:
-            print("Error HTTP del microservicio:", response.status_code)
-            if response.status_code == 400:
-                raise falcon.HTTPBadRequest(
-                    title="Datos inválidos",
-                    description="Uno o más campos del formulario contienen errores. Verifica e intenta nuevamente."
-                )
-            elif response.status_code == 401:
-                raise falcon.HTTPUnauthorized(title="No autorizado", description="Token inválido o expirado.")
-            elif response.status_code == 403:
-                raise falcon.HTTPForbidden(title="Acceso denegado", description="No tienes permiso para esta operación.")
-            else:
-                raise falcon.HTTPInternalServerError(
-                    title="Error en microservicio",
-                    description="Ocurrió un problema al procesar la solicitud."
-                )
         except requests.RequestException as e:
             print("Error al contactar el microservicio:", str(e))
             raise falcon.HTTPBadGateway(description=f"Error al contactar el microservicio: {str(e)}")

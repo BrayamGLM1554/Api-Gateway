@@ -1,6 +1,7 @@
 from marshmallow import Schema, fields, validate, ValidationError
 
 class ProveedorSchema(Schema):
+    proveedorId = fields.Integer()
     nombre = fields.Str(required=True, validate=validate.Length(max=100))
     tipo = fields.Str(validate=validate.Length(max=50))
     direccion = fields.Str(validate=validate.Length(max=200))
@@ -11,6 +12,7 @@ class ProveedorSchema(Schema):
     estatus = fields.Str(validate=validate.Length(max=50))
 
 class ActivoFijoSchema(Schema):
+    activofijoId = fields.Integer()
     nombre = fields.Str(required=True, validate=validate.Length(max=100))
     descripcion = fields.Str(validate=validate.Length(max=200))
     serial = fields.Str(validate=validate.Length(max=100))
@@ -22,6 +24,7 @@ class ActivoFijoSchema(Schema):
     estatus = fields.Str(validate=validate.Length(max=50))
 
 class SucursalSchema(Schema):
+    sucursalId = fields.Integer()
     pais = fields.Str(validate=validate.Length(max=100))
     nombre = fields.Str(required=True, validate=validate.Length(max=100))
     longitud = fields.Decimal(as_string=True, allow_none=True)

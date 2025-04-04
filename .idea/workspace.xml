@@ -7,7 +7,6 @@
     <list default="true" id="47d35d06-caaa-4663-a129-de978f40a989" name="Changes" comment="v 1.0 final version">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/rate_limit.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/rate_limit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,14 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740096760093</updated>
-    </task>
-    <task id="LOCAL-00031" summary="v 0.86.5 New changes on CORS, print origins">
-      <option name="closed" value="true" />
-      <created>1742517240188</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1742517240188</updated>
     </task>
     <task id="LOCAL-00032" summary="v 0.86.7 New changes on CORS, print origins and details">
       <option name="closed" value="true" />
@@ -463,7 +454,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743716218808</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="v 1.0 final version">
+      <option name="closed" value="true" />
+      <created>1743722779512</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1743722779513</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

@@ -16,11 +16,11 @@ class ActivoFijoSchema(Schema):
     nombre = fields.Str(required=True, validate=validate.Length(max=100))
     descripcion = fields.Str(validate=validate.Length(max=200))
     serial = fields.Str(validate=validate.Length(max=100))
-    fechaCompra = fields.Date(allow_none=True)
+    fechaCompra = fields.DateTime(allow_none=True)
     proveedorID = fields.Int(allow_none=True)
     sucursalID = fields.Int(allow_none=True)
-    fechaAlta = fields.Date(allow_none=True)
-    fechaBaja = fields.Date(allow_none=True)
+    fechaAlta = fields.DateTime(allow_none=True)
+    fechaBaja = fields.DateTime(allow_none=True)
     estatus = fields.Str(validate=validate.Length(max=50))
 
 class SucursalSchema(Schema):
